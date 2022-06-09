@@ -1,0 +1,49 @@
+Day-Occurs once at
+
+si el dia > current
+	devolver dia y resto de fecha de current + occurs once at
+si el dia = current
+	si hora < occurs once at (needToAddDays false)
+		devolver current + occurs once at
+	si hora > occurs once at (needToAddDays true)
+		añadir 1 mes a current
+		devolver nueva fecha + occurs once at
+si dia < current
+	añadir 1 mes a current
+	devolver dia y resto de fecha de current + occurs once at
+
+---------------------------------------------------------------------------------------------------
+
+Day-Occurs every
+
+si el dia > current
+	devolver dia y resto de fecha de current + starting limit
+si el dia = current
+	si hora < starting limit
+		devolver current + starting limit
+	si hora > starting limit && hora < ending limit
+		devolver calcula hora y reso de fecha de current
+	si hora > ending limit
+		añadir 1 mes
+		devolver nueva fecha + starting hour 
+si dia < current
+	añadir 1 mes a current
+	devolver dia y resto de fecha de current + starting limit
+
+--------------------------------------------------------------------------------------------------------
+
+The-Occurs once at
+
+sacar que dia es el que te pidan del mes actual
+si el dia > current
+	devolver dia y occurs once at
+si el dia 
+
+
+si es el primero
+	si es lunes
+		metodo(primero,lunes)
+	.
+	.
+	.
+	
