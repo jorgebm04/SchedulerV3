@@ -43,26 +43,47 @@
             int newMonth = (settings.currentDate.Month - rest) + settings.monthly2Freq;
             settings.currentDate = new DateTime(settings.currentDate.Year, newMonth, 1,
                 settings.occursOnceAtHour.Hour, settings.occursOnceAtHour.Minute, settings.occursOnceAtHour.Second);
-            settings.calculatedDate = CalculateNewDay.CalNewDate(settings);
+            DateTime calDate = CalculateNewDay.CalNewDate(settings);
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.endingLimit);
+            if (!inLimits)
+            {
+                settings.nextExecutionTime = "Next execution over end date limits";
+                settings.isOverLimit = true;
+                return;
+            }
+            settings.calculatedDate = calDate;
             settings.nextExecutionTime = settings.calculatedDate.ToString("dd/MM/yyyy HH:mm");
         }
 
         public static void ReturnNormalDate(Settings settings, DateTime calculated)
         {
-            settings.calculatedDate = new DateTime(settings.currentDate.Year, settings.currentDate.Month, calculated.Day,
+            DateTime calDate = new DateTime(settings.currentDate.Year, settings.currentDate.Month, calculated.Day,
                     settings.occursOnceAtHour.Hour, settings.occursOnceAtHour.Minute, settings.occursOnceAtHour.Second);
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.endingLimit);
+            if (!inLimits)
+            {
+                settings.nextExecutionTime = "Next execution over end date limits";
+                settings.isOverLimit = true;
+                return;
+            }
+            settings.calculatedDate = calDate;
             settings.nextExecutionTime = settings.calculatedDate.ToString("dd/MM/yyyy HH:mm");
         }
 
         public static void ReturnAddedDate(Settings settings, DateTime calculated)
         {
-            DateTime calDate = new DateTime(settings.currentDate.Year, settings.currentDate.Month, calculated.Day,
-                    settings.occursOnceAtHour.Hour, settings.occursOnceAtHour.Minute, settings.occursOnceAtHour.Second);
-            settings.currentDate = calDate.AddMonths(settings.monthly2Freq);
-            settings.calculatedDate = CalculateNewDay.CalNewDate(settings);
-            calDate = new DateTime(settings.currentDate.Year, settings.currentDate.Month, settings.calculatedDate.Day,
-                    settings.occursOnceAtHour.Hour, settings.occursOnceAtHour.Minute, settings.occursOnceAtHour.Second);
-            settings.calculatedDate = calDate;
+            settings.currentDate = calculated.AddMonths(settings.monthly2Freq);
+            DateTime calDate = CalculateNewDay.CalNewDate(settings);
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.endingLimit);
+            if (!inLimits)
+            {
+                settings.nextExecutionTime = "Next execution over end date limits";
+                settings.isOverLimit = true;
+                return;
+            }
+            DateTime newDate = new DateTime(calDate.Year,calDate.Month,calDate.Day,
+                settings.occursOnceAtHour.Hour,settings.occursOnceAtHour.Minute,settings.occursOnceAtHour.Second);
+            settings.calculatedDate = newDate;
             settings.nextExecutionTime = settings.calculatedDate.ToString("dd/MM/yyyy HH:mm");
         }
     }

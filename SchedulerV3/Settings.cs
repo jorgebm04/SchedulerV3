@@ -33,5 +33,6 @@ namespace SchedulerV3
         public int lastDay { get; set; }
         public SortedList days = new SortedList();
         public String? dayOfTheWeek { get; set; }
+        public bool isOverLimit { get; set; }
     }
 }

@@ -33,7 +33,8 @@ namespace SchedulerV3.Windows
                 endingHour = endingAtDateTimePicker.Value,
                 startingLimit = startLimitDateTimePicker.Value,
                 endingLimit = endLimitDateTimePicker.Value,
-                freqTime = occursEveryComboBox.Text
+                freqTime = occursEveryComboBox.Text,
+                isOverLimit = false
             };
             CheckSettings(settings);
         }

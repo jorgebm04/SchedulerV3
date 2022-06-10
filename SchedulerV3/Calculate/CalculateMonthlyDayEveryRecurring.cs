@@ -46,15 +46,31 @@
         public static void ReturnDate(Settings settings, int rest)
         {
             int newMonth = (settings.currentDate.Month - rest) + settings.numMonths;
-            settings.calculatedDate = new DateTime(settings.currentDate.Year, newMonth, settings.numDay,
+            DateTime calDate = new DateTime(settings.currentDate.Year, newMonth, settings.numDay,
                     settings.startingHour.Hour, settings.startingHour.Minute, settings.startingHour.Second);
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.endingLimit);
+            if (!inLimits)
+            {
+                settings.nextExecutionTime = "Next execution over end date limits";
+                settings.isOverLimit = true;
+                return;
+            }
+            settings.calculatedDate = calDate;
             settings.nextExecutionTime = settings.calculatedDate.ToString("dd/MM/yyyy HH:mm");
         }
 
         public static void ReturnNormalDate(Settings settings)
         {
-            settings.calculatedDate = new DateTime(settings.currentDate.Year, settings.currentDate.Month, settings.numDay,
+            DateTime calDate = new DateTime(settings.currentDate.Year, settings.currentDate.Month, settings.numDay,
                     settings.startingHour.Hour, settings.startingHour.Minute, settings.startingHour.Second);
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.endingLimit);
+            if (!inLimits)
+            {
+                settings.nextExecutionTime = "Next execution over end date limits";
+                settings.isOverLimit = true;
+                return;
+            }
+            settings.calculatedDate = calDate;
             settings.nextExecutionTime = settings.calculatedDate.ToString("dd/MM/yyyy HH:mm");
         }
 
@@ -62,7 +78,15 @@
         {
             DateTime calDate = new DateTime(settings.currentDate.Year, settings.currentDate.Month, settings.numDay,
                     settings.startingHour.Hour, settings.startingHour.Minute, settings.startingHour.Second);
-            settings.calculatedDate = calDate.AddMonths(settings.numMonths);
+            calDate = calDate.AddMonths(settings.numMonths);
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.endingLimit);
+            if (!inLimits)
+            {
+                settings.nextExecutionTime = "Next execution over end date limits";
+                settings.isOverLimit = true;
+                return;
+            }
+            settings.calculatedDate = calDate;
             settings.nextExecutionTime = settings.calculatedDate.ToString("dd/MM/yyyy HH:mm");
         }
 
@@ -90,8 +114,16 @@
                     break;
                 }
             }
-            settings.calculatedDate = new DateTime(settings.currentDate.Year, settings.currentDate.Month, settings.numDay,
+            DateTime calDate = new DateTime(settings.currentDate.Year, settings.currentDate.Month, settings.numDay,
                     calculated.Hour, calculated.Minute, calculated.Second);
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.endingLimit);
+            if (!inLimits)
+            {
+                settings.nextExecutionTime = "Next execution over end date limits";
+                settings.isOverLimit = true;
+                return;
+            }
+            settings.calculatedDate = calDate;
             settings.nextExecutionTime = settings.calculatedDate.ToString("dd/MM/yyyy HH:mm");
         }
     }

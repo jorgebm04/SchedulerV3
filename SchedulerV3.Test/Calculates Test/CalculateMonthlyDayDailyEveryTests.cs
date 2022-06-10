@@ -5,7 +5,34 @@ namespace SchedulerV3.Test.Calculates_Test
 {
     public class CalculateMonthlyDayDailyEveryTests
     {
+        //-------------------- NOT IN LIMITS -------------------//
+        [Fact]
+        public void Validate_calculated_date_type_recurring_monthly_not_in_limits()
+        {
+            //Arrange
+            var settings = new Settings
+            {
+                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                occurs = 1,
+                numDay = 15,
+                numMonths = 4,
+                day = true,
+                occursEvery = true,
+                occursEveryFreq = 1,
+                freq = 0,
+                needToAddDay = false,
+                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                startingLimit = new System.DateTime(2022,1,1,0,0,0),
+                endingLimit = new System.DateTime(2022,07,1,0,0,0)
+            };
+            //Act
+            CalculateRecurring.calculate(settings);
+            //Assert
+            settings.nextExecutionTime.Should().Be("Next execution over end date limits");
+        }
 
+        //-------------------- IN LIMITS -------------------//
         [Fact]
         public void Validate_calculated_date_type_recurring_monthly_not_in_month()
         {
@@ -22,7 +49,9 @@ namespace SchedulerV3.Test.Calculates_Test
                 freq = 0,
                 needToAddDay = false,
                 startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0)
+                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 15, 10, 0, 0);
             //Act
@@ -47,7 +76,9 @@ namespace SchedulerV3.Test.Calculates_Test
                 freq = 0,
                 needToAddDay = false,
                 startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0)
+                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 15, 10, 0, 0);
             //Act
@@ -72,7 +103,9 @@ namespace SchedulerV3.Test.Calculates_Test
                 freq = 0,
                 needToAddDay = false,
                 startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0)
+                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 09, 10, 0, 0);
             //Act
@@ -97,7 +130,9 @@ namespace SchedulerV3.Test.Calculates_Test
                 freq = 0,
                 needToAddDay = false,
                 startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0)
+                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 09, 11, 0, 0);
             //Act
@@ -122,7 +157,9 @@ namespace SchedulerV3.Test.Calculates_Test
                 freq = 0,
                 needToAddDay = true,
                 startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 12, 0, 0)
+                endingHour = new System.DateTime(2000, 01, 01, 12, 0, 0),
+                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 09, 10, 0, 0);
             //Act
@@ -147,7 +184,9 @@ namespace SchedulerV3.Test.Calculates_Test
                 freq = 0,
                 needToAddDay = true,
                 startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 12, 0, 0)
+                endingHour = new System.DateTime(2000, 01, 01, 12, 0, 0),
+                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 08, 10, 0, 0);
             //Act
@@ -172,7 +211,9 @@ namespace SchedulerV3.Test.Calculates_Test
                 freq = 1,
                 needToAddDay = false,
                 startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0)
+                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 15, 10, 0, 0);
             //Act
@@ -197,7 +238,9 @@ namespace SchedulerV3.Test.Calculates_Test
                 freq = 1,
                 needToAddDay = false,
                 startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0)
+                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 09, 10, 0, 0);
             //Act
@@ -222,7 +265,9 @@ namespace SchedulerV3.Test.Calculates_Test
                 freq = 1,
                 needToAddDay = false,
                 startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0)
+                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 09, 10, 30, 0);
             //Act
@@ -247,7 +292,9 @@ namespace SchedulerV3.Test.Calculates_Test
                 freq = 1,
                 needToAddDay = true,
                 startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 12, 0, 0)
+                endingHour = new System.DateTime(2000, 01, 01, 12, 0, 0),
+                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 09, 10, 0, 0);
             //Act
@@ -272,7 +319,9 @@ namespace SchedulerV3.Test.Calculates_Test
                 freq = 1,
                 needToAddDay = true,
                 startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 12, 0, 0)
+                endingHour = new System.DateTime(2000, 01, 01, 12, 0, 0),
+                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 08, 10, 0, 0);
             //Act
