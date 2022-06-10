@@ -8,7 +8,7 @@
             if(freq == 4)
             {
                 int daysInMonth = DateTime.DaysInMonth(current.Year, current.Month);
-                pre = new DateTime(current.Year, current.Month, daysInMonth);
+                pre = new DateTime(current.Year, current.Month, daysInMonth, current.Hour, current.Minute, current.Second);
                 while(pre.DayOfWeek != day)
                 {
                     pre = pre.AddDays(-1);
@@ -16,7 +16,7 @@
             } 
             else
             {
-                pre = new DateTime(current.Year, current.Month, 1);
+                pre = new DateTime(current.Year, current.Month, 1, current.Hour,current.Minute,current.Second);
                 while (pre.DayOfWeek != day)
                 {
                     pre = pre.AddDays(1);
@@ -46,7 +46,7 @@
             if (freq == 4)
             {
                 int daysInMonth = DateTime.DaysInMonth(current.Year, current.Month);
-                pre = new DateTime(current.Year, current.Month, daysInMonth);
+                pre = new DateTime(current.Year, current.Month, daysInMonth, current.Hour, current.Minute, current.Second);
                 while (pre.DayOfWeek != DayOfWeek.Monday && pre.DayOfWeek != DayOfWeek.Tuesday && pre.DayOfWeek != DayOfWeek.Wednesday &&
                     pre.DayOfWeek != DayOfWeek.Thursday && pre.DayOfWeek != DayOfWeek.Friday)
                 {
@@ -84,7 +84,7 @@
             if (freq == 4)
             {
                 int daysInMonth = DateTime.DaysInMonth(current.Year, current.Month);
-                pre = new DateTime(current.Year, current.Month, daysInMonth);
+                pre = new DateTime(current.Year, current.Month, daysInMonth, current.Hour, current.Minute, current.Second);
                 while (pre.DayOfWeek != DayOfWeek.Saturday && pre.DayOfWeek != DayOfWeek.Sunday)
                 {
                     pre = pre.AddDays(-1);

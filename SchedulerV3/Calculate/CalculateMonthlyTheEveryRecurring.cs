@@ -4,39 +4,56 @@
     {
         public static void CalculateNextExecutionTime(Settings settings)
         {
-            DateTime calculatedDate = CalculateNewDay.CalNewDate(settings);
-            if (DateTime.Compare(calculatedDate, settings.currentDate) > 0)
+            int rest = settings.currentDate.Month % settings.monthly2Freq;
+            if (rest != 0)
             {
-                ReturnDate(settings,calculatedDate);
-                return;
+                ReturnDate(settings, rest);
             }
-            else if (calculatedDate.ToString("dd/MM/yyyy").Equals(settings.currentDate.ToString("dd/MM/yyyy")))
+            else
             {
-                if (TimeSpan.Compare(settings.currentDate.TimeOfDay, settings.startingHour.TimeOfDay) < 0)
+                DateTime calculatedDate = CalculateNewDay.CalNewDate(settings);
+                if (DateTime.Compare(calculatedDate, settings.currentDate) > 0)
                 {
-                    ReturnDate(settings,calculatedDate);
+                    ReturnNormalDate(settings, calculatedDate);
                     return;
                 }
-                else if ((TimeSpan.Compare(settings.currentDate.TimeOfDay, settings.startingHour.TimeOfDay) > 0) &&
-                    TimeSpan.Compare(settings.currentDate.TimeOfDay, settings.endingHour.TimeOfDay) < 0)
+                else if (calculatedDate.ToString("dd/MM/yyyy").Equals(settings.currentDate.ToString("dd/MM/yyyy")))
                 {
-                    Calculate(settings,calculatedDate);
-                    return;
+                    if (TimeSpan.Compare(settings.currentDate.TimeOfDay, settings.startingHour.TimeOfDay) < 0)
+                    {
+                        ReturnNormalDate(settings, calculatedDate);
+                        return;
+                    }
+                    else if ((TimeSpan.Compare(settings.currentDate.TimeOfDay, settings.startingHour.TimeOfDay) > 0) &&
+                        TimeSpan.Compare(settings.currentDate.TimeOfDay, settings.endingHour.TimeOfDay) < 0)
+                    {
+                        Calculate(settings, calculatedDate);
+                        return;
+                    }
+                    else if (TimeSpan.Compare(settings.currentDate.TimeOfDay, settings.endingHour.TimeOfDay) > 0)
+                    {
+                        ReturnAddedDate(settings, calculatedDate);
+                        return;
+                    }
                 }
-                else if (TimeSpan.Compare(settings.currentDate.TimeOfDay, settings.endingHour.TimeOfDay) > 0)
+                else
                 {
                     ReturnAddedDate(settings, calculatedDate);
                     return;
                 }
             }
-            else
-            {
-                ReturnAddedDate(settings, calculatedDate);
-                return;
-            }
         }
 
-        public static void ReturnDate(Settings settings,DateTime calculated)
+        public static void ReturnDate(Settings settings, int rest)
+        {
+            int newMonth = (settings.currentDate.Month - rest) + settings.monthly2Freq;
+            settings.currentDate = new DateTime(settings.currentDate.Year, newMonth, 1,
+                settings.startingHour.Hour, settings.startingHour.Minute, settings.startingHour.Second);
+            settings.calculatedDate = CalculateNewDay.CalNewDate(settings);
+            settings.nextExecutionTime = settings.calculatedDate.ToString("dd/MM/yyyy HH:mm");
+        }
+
+        public static void ReturnNormalDate(Settings settings,DateTime calculated)
         {
             settings.calculatedDate = new DateTime(settings.currentDate.Year, settings.currentDate.Month, calculated.Day,
             settings.startingHour.Hour, settings.startingHour.Minute, settings.startingHour.Second);

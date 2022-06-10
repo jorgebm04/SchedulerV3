@@ -5,8 +5,34 @@ namespace SchedulerV3.Test.Calculates_Test
 {
     public class CalculateMonthlyDayDailyEveryTests
     {
+
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_before_day_occurs_every_hour()
+        public void Validate_calculated_date_type_recurring_monthly_not_in_month()
+        {
+            //Arrange
+            var settings = new Settings
+            {
+                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                occurs = 1,
+                numDay = 15,
+                numMonths = 4,
+                day = true,
+                occursEvery = true,
+                occursEveryFreq = 1,
+                freq = 0,
+                needToAddDay = false,
+                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0)
+            };
+            var expectedDate = new System.DateTime(2022, 08, 15, 10, 0, 0);
+            //Act
+            CalculateRecurring.calculate(settings);
+            //Assert
+            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+        }
+
+        [Fact]
+        public void Validate_calculated_date_type_recurring_monthly_in_month_before_day_occurs_every_hour()
         {
             //Arrange
             var settings = new Settings
@@ -31,7 +57,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_in_day_before_hour_occurs_every_hour()
+        public void Validate_calculated_date_type_recurring_monthly_in_month_in_day_before_hour_occurs_every_hour()
         {
             //Arrange
             var settings = new Settings
@@ -56,7 +82,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_in_day_in_hour_occurs_every_hour()
+        public void Validate_calculated_date_type_recurring_monthly_in_month_in_day_in_hour_occurs_every_hour()
         {
             //Arrange
             var settings = new Settings
@@ -81,7 +107,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_in_day_over_hour_occurs_every_hour()
+        public void Validate_calculated_date_type_recurring_monthly_in_month_in_day_over_hour_occurs_every_hour()
         {
             //Arrange
             var settings = new Settings
@@ -106,7 +132,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_over_day_occurs_every_hour()
+        public void Validate_calculated_date_type_recurring_monthly_in_month_over_day_occurs_every_hour()
         {
             //Arrange
             var settings = new Settings
@@ -131,7 +157,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_before_day_occurs_every_minutes()
+        public void Validate_calculated_date_type_recurring_monthly_in_month_before_day_occurs_every_minutes()
         {
             //Arrange
             var settings = new Settings
@@ -156,7 +182,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_in_day_before_hour_occurs_every_minutes()
+        public void Validate_calculated_date_type_recurring_monthly_in_month_in_day_before_hour_occurs_every_minutes()
         {
             //Arrange
             var settings = new Settings
@@ -181,7 +207,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_in_day_in_hour_occurs_every_minutes()
+        public void Validate_calculated_date_type_recurring_monthly_in_month_in_day_in_hour_occurs_every_minutes()
         {
             //Arrange
             var settings = new Settings
@@ -206,7 +232,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_in_day_over_hour_occurs_every_minutes()
+        public void Validate_calculated_date_type_recurring_monthly_in_month_in_day_over_hour_occurs_every_minutes()
         {
             //Arrange
             var settings = new Settings
@@ -231,7 +257,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_over_day_occurs_every_minutes()
+        public void Validate_calculated_date_type_recurring_monthly_in_month_over_day_occurs_every_minutes()
         {
             //Arrange
             var settings = new Settings

@@ -5,6 +5,28 @@ namespace SchedulerV3.Test.Calculates_Test
 {
     public class CalculateMonthlyTheDailyOnceTests
     {
+        [Fact]
+        public void Validate_calculated_date_type_recurring_monthly_not_in_month()
+        {
+            //Arrange
+            var settings = new Settings
+            {
+                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                occurs = 1,
+                monthlyFreq = 0, //First
+                dailyFreq = 0, //Monday
+                monthly2Freq = 4, //Num Months
+                the = true,
+                occursOnceAt = true,
+                occursOnceAtHour = new System.DateTime(2000, 01, 1, 14, 0, 0),
+            };
+            var expectedDate = new System.DateTime(2022, 08, 01, 14, 0, 0);
+            //Act
+            CalculateRecurring.calculate(settings);
+            //Assert
+            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+        }
+
         //-------------------------------- FIRST TESTS -----------------------------------//
         [Fact]
         public void Validate_calculated_date_type_recurring_monthly_first_monday()
