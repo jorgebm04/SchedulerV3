@@ -4,10 +4,10 @@
     {
         public static void SetDescription(Settings settings)
         {
-            if (!settings.isOverLimit)
+            if (!settings.IsOverLimit)
             {
-                settings.description = "Occurs every " + settings.numDay + "day every " + settings.numMonths + ". Schedule will be used on " + settings.calculatedDate.ToString("dd'/'MM'/'yyyy") + " at " +
-                settings.calculatedDate.ToString("HH:mm") + " every " + settings.occursEveryFreq + " " + settings.freqTime + " starting on " + settings.startingLimit.ToString("dd'/'MM'/'yyyy");
+                settings.Description = "Occurs every " + settings.NumDay + "day every " + settings.NumMonths + ". Schedule will be used on " + settings.CalculatedDate.ToString("dd'/'MM'/'yyyy") + " at " +
+                settings.CalculatedDate.ToString("HH:mm") + " every " + settings.OccursEveryFreq + " " + settings.FreqTime + " starting on " + settings.StartingLimit.ToString("dd'/'MM'/'yyyy");
             }
         }           
     }

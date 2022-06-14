@@ -160,7 +160,7 @@
             this.occursComboBox.Name = "occursComboBox";
             this.occursComboBox.Size = new System.Drawing.Size(571, 23);
             this.occursComboBox.TabIndex = 6;
-            this.occursComboBox.SelectedIndexChanged += new System.EventHandler(this.occursComboBox_SelectedIndexChanged);
+            this.occursComboBox.SelectedIndexChanged += new System.EventHandler(this.OccursComboBox_SelectedIndexChanged);
             // 
             // enabledCheckBox
             // 
@@ -184,7 +184,7 @@
             this.typeComboBox.Name = "typeComboBox";
             this.typeComboBox.Size = new System.Drawing.Size(207, 23);
             this.typeComboBox.TabIndex = 3;
-            this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.typeComboBox_SelectedIndexChanged);
+            this.typeComboBox.SelectedIndexChanged += new System.EventHandler(this.TypeComboBox_SelectedIndexChanged);
             // 
             // occursLabel
             // 

@@ -4,8 +4,8 @@
     {
         public static void CalculateNextExecutionTime(Settings settings)
         {
-            settings.calculatedDate = settings.onceTimeAt;
-            settings.nextExecutionTime = settings.onceTimeAt.ToString("dd/MM/yyyy HH:mm");
+            settings.CalculatedDate = settings.OnceTimeAt;
+            settings.NextExecutionTime = settings.OnceTimeAt.ToString("dd/MM/yyyy HH:mm");
         }
     }
 }

@@ -4,9 +4,9 @@
     {
         public static void SetDescription(Settings settings)
         {
-            String description = "Occurs once. Schedule will be used on " + settings.calculatedDate.ToString("dd'/'MM'/'yyyy") + " at " +
-                        settings.calculatedDate.ToString("HH:mm");
-            settings.description = description;
+            String description = "Occurs once. Schedule will be used on " + settings.CalculatedDate.ToString("dd'/'MM'/'yyyy") + " at " +
+                        settings.CalculatedDate.ToString("HH:mm");
+            settings.Description = description;
         }
     }
 }

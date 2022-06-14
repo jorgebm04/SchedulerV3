@@ -11,10 +11,10 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = System.DateTime.Now
+                CurrentDate = System.DateTime.Now
             };
             //Act
-            bool result = CurrentDateChecker.CheckCurrentDate(settings.currentDate);
+            bool result = CurrentDateChecker.CheckCurrentDate(settings.CurrentDate);
             //Assert
             result.Should().BeTrue();
         }
@@ -25,10 +25,10 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2000, 1, 1, 0, 0, 0)
+                CurrentDate = new System.DateTime(2000, 1, 1, 0, 0, 0)
             };
             //Act
-            bool result = CurrentDateChecker.CheckCurrentDate(settings.currentDate);
+            bool result = CurrentDateChecker.CheckCurrentDate(settings.CurrentDate);
             //Assert
             result.Should().BeFalse();
         }
@@ -39,11 +39,11 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 05, 20, 15, 0, 0),
-                onceTimeAt = new System.DateTime(2022, 05, 30, 15, 0, 0)
+                CurrentDate = new System.DateTime(2022, 05, 20, 15, 0, 0),
+                OnceTimeAt = new System.DateTime(2022, 05, 30, 15, 0, 0)
             };
             //Act
-            bool result = OnceTimeAtChecker.CheckOnceTimeAt(settings.currentDate, settings.onceTimeAt);
+            bool result = OnceTimeAtChecker.CheckOnceTimeAt(settings.CurrentDate, settings.OnceTimeAt);
             //Assert
             result.Should().BeTrue();
         }
@@ -54,11 +54,11 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 05, 20, 15, 0, 0),
-                onceTimeAt = new System.DateTime(2022, 05, 10, 15, 0, 0)
+                CurrentDate = new System.DateTime(2022, 05, 20, 15, 0, 0),
+                OnceTimeAt = new System.DateTime(2022, 05, 10, 15, 0, 0)
             };
             //Act
-            bool result = OnceTimeAtChecker.CheckOnceTimeAt(settings.currentDate, settings.onceTimeAt);
+            bool result = OnceTimeAtChecker.CheckOnceTimeAt(settings.CurrentDate, settings.OnceTimeAt);
             //Assert
             result.Should().BeFalse();
         }

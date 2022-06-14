@@ -4,13 +4,13 @@
     {
         public static void CalculateNextExecutionTime(Settings settings)
         {
-            if (settings.needToAddDay)
+            if (settings.NeedToAddDay)
             {
-                settings.currentDate = settings.currentDate.AddDays(1);
+                settings.CurrentDate = settings.CurrentDate.AddDays(1);
             }
-            string calculated = settings.currentDate.ToString("dd/MM/yyyy") + " " + settings.occursOnceAtHour.ToString("HH:mm");
-            settings.calculatedDate = DateTime.ParseExact(calculated,"dd/MM/yyyy HH:mm",null);
-            settings.nextExecutionTime = calculated;
+            string calculated = settings.CurrentDate.ToString("dd/MM/yyyy") + " " + settings.OccursOnceAtHour.ToString("HH:mm");
+            settings.CalculatedDate = DateTime.ParseExact(calculated,"dd/MM/yyyy HH:mm",null);
+            settings.NextExecutionTime = calculated;
         }
     }
 }

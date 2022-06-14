@@ -4,35 +4,35 @@ namespace SchedulerV3
 {
     public class Settings
     {
-        public DateTime currentDate { get; set; }
-        public int type { get; set; }
-        public bool enabled { get; set; }
-        public DateTime onceTimeAt { get; set; }
-        public int occurs { get; set; }
-        public bool day { get; set; }
-        public int numDay { get; set; }
-        public int numMonths { get; set; }
-        public bool the { get; set; }
-        public int monthlyFreq { get; set; }
-        public int dailyFreq { get; set; }
-        public int monthly2Freq { get; set; }
-        public bool occursOnceAt { get; set; }
-        public DateTime occursOnceAtHour { get; set; }
-        public bool occursEvery { get; set; }
-        public int occursEveryFreq { get; set; }
-        public int freq { get; set; }
-        public string? freqTime { get; set; }
-        public DateTime startingHour { get; set; }
-        public DateTime endingHour { get; set; }
-        public DateTime startingLimit { get; set; }
-        public DateTime endingLimit { get; set; }
-        public String? nextExecutionTime { get; set; }
-        public String? description { get; set; }
-        public DateTime calculatedDate { get; set; }
-        public bool needToAddDay { get; set; }
-        public int lastDay { get; set; }
-        public SortedList days = new SortedList();
-        public String? dayOfTheWeek { get; set; }
-        public bool isOverLimit { get; set; }
+        public DateTime CurrentDate { get; set; }
+        public int Type { get; set; }
+        public bool Enabled { get; set; }
+        public DateTime OnceTimeAt { get; set; }
+        public int Occurs { get; set; }
+        public bool Day { get; set; }
+        public int NumDay { get; set; }
+        public int NumMonths { get; set; }
+        public bool The { get; set; }
+        public int MonthlyFreq { get; set; }
+        public int DailyFreq { get; set; }
+        public int Monthly2Freq { get; set; }
+        public bool OccursOnceAt { get; set; }
+        public DateTime OccursOnceAtHour { get; set; }
+        public bool OccursEvery { get; set; }
+        public int OccursEveryFreq { get; set; }
+        public int Freq { get; set; }
+        public string? FreqTime { get; set; }
+        public DateTime StartingHour { get; set; }
+        public DateTime EndingHour { get; set; }
+        public DateTime StartingLimit { get; set; }
+        public DateTime EndingLimit { get; set; }
+        public String? NextExecutionTime { get; set; }
+        public String? Description { get; set; }
+        public DateTime CalculatedDate { get; set; }
+        public bool NeedToAddDay { get; set; }
+        public int LastDay { get; set; }
+        public SortedList days = new();
+        public String? DayOfTheWeek { get; set; }
+        public bool IsOverLimit { get; set; }
     }
 }

@@ -2,14 +2,14 @@
 {
     public static class CalculateRecurring
     {
-        public static void calculate(Settings settings)
+        public static void Calculate(Settings settings)
         {
-            if (settings.occurs == 0)
+            if (settings.Occurs == 0)
             {
-                if (settings.occursOnceAt)
+                if (settings.OccursOnceAt)
                 {
                     CalculateDailyRecurring.CalculateNextExecutionTime(settings);
-                    DailyRecurringDescription.setDescription(settings);
+                    DailyRecurringDescription.SetDescription(settings);
                 }
                 else 
                 { 
@@ -18,11 +18,11 @@
                 }
             }
             
-            else if (settings.occurs == 1)
+            else if (settings.Occurs == 1)
             {
-                if (settings.day)
+                if (settings.Day)
                 {
-                    if (settings.occursOnceAt)
+                    if (settings.OccursOnceAt)
                     {
                         CalculateMonthlyDayOnceRecurring.CalculateNextExecutionTime(settings);
                         MonthlyDayOnceDescription.SetDescription(settings);
@@ -35,7 +35,7 @@
                 }
                 else
                 {
-                    if (settings.occursOnceAt)
+                    if (settings.OccursOnceAt)
                     {
                         CalculateMonthlyTheOnceRecurring.CalculateNextExecutionTime(settings);
                         MonthlyTheOnceDescription.SetDescription(settings);

@@ -4,23 +4,23 @@
     {
         public static void CheckRecurrentMonthlySettings(Settings settings)
         {
-            if (settings.the)
+            if (settings.The)
             {
-                bool monthFreq = MonthFrequencyChecker.CheckMonthFrequency(settings.monthlyFreq);
+                bool monthFreq = MonthFrequencyChecker.CheckMonthFrequency(settings.MonthlyFreq);
                 if (!monthFreq)
                 {
-                    settings.nextExecutionTime = "Select a frequency for the monthly frequency";
+                    settings.NextExecutionTime = "Select a frequency for the monthly frequency";
                     return;
                 }
-                bool daysFreq = DayFrequencyChecker.CheckDayFrequency(settings.dailyFreq);
+                bool daysFreq = DayFrequencyChecker.CheckDayFrequency(settings.DailyFreq);
                 if (!daysFreq)
                 {
-                    settings.nextExecutionTime = "Select a frequency for the days frequency";
+                    settings.NextExecutionTime = "Select a frequency for the days frequency";
                     return;
                 }
-            } else if (!settings.day)
+            } else if (!settings.Day)
             {
-                settings.nextExecutionTime = "Select a monthly configuration.";
+                settings.NextExecutionTime = "Select a monthly configuration.";
                 return;
             }
             CheckDailySettings.CheckRecurringDailySettings(settings);

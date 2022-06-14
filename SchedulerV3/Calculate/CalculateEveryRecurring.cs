@@ -5,11 +5,11 @@
         public static void CalculateNextExecutionTime(Settings settings)
         {
             //If current date is later then ending limit
-            if (settings.needToAddDay)
+            if (settings.NeedToAddDay)
             {
-                settings.currentDate = settings.currentDate.AddDays(1);
-                settings.nextExecutionTime = settings.currentDate.ToString("dd/MM/yyyy") + " " + settings.startingHour.ToString("HH:mm");
-                settings.calculatedDate = DateTime.ParseExact(settings.nextExecutionTime, "dd/MM/yyyy HH:mm", null);
+                settings.CurrentDate = settings.CurrentDate.AddDays(1);
+                settings.NextExecutionTime = settings.CurrentDate.ToString("dd/MM/yyyy") + " " + settings.StartingHour.ToString("HH:mm");
+                settings.CalculatedDate = DateTime.ParseExact(settings.NextExecutionTime, "dd/MM/yyyy HH:mm", null);
                 return;
             }
             Calculate(settings);
@@ -18,30 +18,30 @@
         public static void Calculate(Settings settings)
         {
             //Calculate the next execution time
-            DateTime calculated = settings.startingHour;
-            while (TimeSpan.Compare(calculated.TimeOfDay, settings.currentDate.TimeOfDay) < 0)
+            DateTime calculated = settings.StartingHour;
+            while (TimeSpan.Compare(calculated.TimeOfDay, settings.CurrentDate.TimeOfDay) < 0)
             {
-                switch (settings.freq)
+                switch (settings.Freq)
                 {
                     case (int)FreqEnum.Frequency.Hours:
-                        calculated = calculated.AddHours(settings.occursEveryFreq);
+                        calculated = calculated.AddHours(settings.OccursEveryFreq);
                         break;
                     case (int)FreqEnum.Frequency.Minutes:
-                        calculated = calculated.AddMinutes(settings.occursEveryFreq);
+                        calculated = calculated.AddMinutes(settings.OccursEveryFreq);
                         break;
                     case (int)FreqEnum.Frequency.Seconds:
-                        calculated = calculated.AddSeconds(settings.occursEveryFreq);
+                        calculated = calculated.AddSeconds(settings.OccursEveryFreq);
                         break;
                 }
-                if (TimeSpan.Compare(calculated.TimeOfDay, settings.endingHour.TimeOfDay) > 0)
+                if (TimeSpan.Compare(calculated.TimeOfDay, settings.EndingHour.TimeOfDay) > 0)
                 {
-                    calculated = settings.endingHour;
+                    calculated = settings.EndingHour;
                     break;
                 }
             }
-            string nextExecution = settings.currentDate.ToString("dd/MM/yyyy") + " " + calculated.ToString("HH:mm");
-            settings.calculatedDate = DateTime.ParseExact(nextExecution, "dd/MM/yyyy HH:mm", null);
-            settings.nextExecutionTime = nextExecution;
+            string nextExecution = settings.CurrentDate.ToString("dd/MM/yyyy") + " " + calculated.ToString("HH:mm");
+            settings.CalculatedDate = DateTime.ParseExact(nextExecution, "dd/MM/yyyy HH:mm", null);
+            settings.NextExecutionTime = nextExecution;
         }
     }
 }

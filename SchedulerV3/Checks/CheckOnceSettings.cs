@@ -4,10 +4,10 @@
     {
         public static void CheckSettings(Settings settings)
         {
-            bool currentDate = CurrentDateChecker.CheckCurrentDate(settings.currentDate);
+            bool currentDate = CurrentDateChecker.CheckCurrentDate(settings.CurrentDate);
             if (!currentDate)
             {
-                settings.nextExecutionTime = "Current date not correct.";
+                settings.NextExecutionTime = "Current date not correct.";
                 return;
             }
             CheckOnceTimeAt(settings);
@@ -15,13 +15,13 @@
 
         public static void CheckOnceTimeAt(Settings settings)
         {
-            bool time = OnceTimeAtChecker.CheckOnceTimeAt(settings.currentDate,settings.onceTimeAt);
+            bool time = OnceTimeAtChecker.CheckOnceTimeAt(settings.CurrentDate,settings.OnceTimeAt);
             if (!time)
             {
-                settings.nextExecutionTime = "Once time at date not valid";
+                settings.NextExecutionTime = "Once time at date not valid";
                 return;
             }
-            settings.nextExecutionTime = "";
+            settings.NextExecutionTime = "";
         }
     }
 }

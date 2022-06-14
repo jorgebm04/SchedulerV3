@@ -13,7 +13,7 @@
                 }
                 else if (i == 0)
                 {
-                    resultado = resultado + settings.days.GetByIndex(i);
+                    resultado += settings.days.GetByIndex(i);
                 }
                 else
                 {
@@ -21,9 +21,9 @@
                 }
 
             }
-            string description = "Occurs every " + /*settings.weeks +*/ " weeks on " + resultado + ". Schedule will be used on " + settings.calculatedDate.ToString("dd'/'MM'/'yyyy") + " at " +
-                settings.calculatedDate.ToString("HH:mm") + " starting on " + settings.startingLimit.ToString("dd'/'MM'/'yyyy");
-            settings.description = description;
+            string description = "Occurs every " + /*settings.weeks +*/ " weeks on " + resultado + ". Schedule will be used on " + settings.CalculatedDate.ToString("dd'/'MM'/'yyyy") + " at " +
+                settings.CalculatedDate.ToString("HH:mm") + " starting on " + settings.StartingLimit.ToString("dd'/'MM'/'yyyy");
+            settings.Description = description;
         }
     }
 }

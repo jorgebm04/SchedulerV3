@@ -4,7 +4,7 @@
     {
         public static void CalculateNextExecutionTime(Settings settings)
         {
-            int rest = settings.currentDate.Month % settings.monthly2Freq;
+            int rest = settings.CurrentDate.Month % settings.Monthly2Freq;
             if (rest != 0)
             {
                 ReturnDate(settings, rest);
@@ -12,25 +12,25 @@
             else
             {
                 DateTime calculatedDate = CalculateNewDay.CalNewDate(settings);
-                if (DateTime.Compare(calculatedDate, settings.currentDate) > 0)
+                if (DateTime.Compare(calculatedDate, settings.CurrentDate) > 0)
                 {
                     ReturnNormalDate(settings, calculatedDate);
                     return;
                 }
-                else if (calculatedDate.ToString("dd/MM/yyyy").Equals(settings.currentDate.ToString("dd/MM/yyyy")))
+                else if (calculatedDate.ToString("dd/MM/yyyy").Equals(settings.CurrentDate.ToString("dd/MM/yyyy")))
                 {
-                    if (TimeSpan.Compare(settings.currentDate.TimeOfDay, settings.startingHour.TimeOfDay) < 0)
+                    if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.StartingHour.TimeOfDay) < 0)
                     {
                         ReturnNormalDate(settings, calculatedDate);
                         return;
                     }
-                    else if ((TimeSpan.Compare(settings.currentDate.TimeOfDay, settings.startingHour.TimeOfDay) > 0) &&
-                        TimeSpan.Compare(settings.currentDate.TimeOfDay, settings.endingHour.TimeOfDay) < 0)
+                    else if ((TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.StartingHour.TimeOfDay) > 0) &&
+                        TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.EndingHour.TimeOfDay) < 0)
                     {
                         Calculate(settings, calculatedDate);
                         return;
                     }
-                    else if (TimeSpan.Compare(settings.currentDate.TimeOfDay, settings.endingHour.TimeOfDay) > 0)
+                    else if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.EndingHour.TimeOfDay) > 0)
                     {
                         ReturnAddedDate(settings, calculatedDate);
                         return;
@@ -46,89 +46,89 @@
 
         public static void ReturnDate(Settings settings, int rest)
         {
-            int newMonth = (settings.currentDate.Month - rest) + settings.monthly2Freq;
-            settings.currentDate = new DateTime(settings.currentDate.Year, newMonth, 1,
-                settings.startingHour.Hour, settings.startingHour.Minute, settings.startingHour.Second);
+            int newMonth = (settings.CurrentDate.Month - rest) + settings.Monthly2Freq;
+            settings.CurrentDate = new DateTime(settings.CurrentDate.Year, newMonth, 1,
+                settings.StartingHour.Hour, settings.StartingHour.Minute, settings.StartingHour.Second);
             DateTime calDate = CalculateNewDay.CalNewDate(settings);
-            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.endingLimit);
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.EndingLimit);
             if (!inLimits)
             {
-                settings.nextExecutionTime = "Next execution over end date limits";
-                settings.isOverLimit = true;
+                settings.NextExecutionTime = "Next execution over end date limits";
+                settings.IsOverLimit = true;
                 return;
             }
-            settings.calculatedDate = calDate;
-            settings.nextExecutionTime = settings.calculatedDate.ToString("dd/MM/yyyy HH:mm");
+            settings.CalculatedDate = calDate;
+            settings.NextExecutionTime = settings.CalculatedDate.ToString("dd/MM/yyyy HH:mm");
         }
 
         public static void ReturnNormalDate(Settings settings,DateTime calculated)
         {
-            DateTime calDate = new DateTime(settings.currentDate.Year, settings.currentDate.Month, calculated.Day,
-                settings.startingHour.Hour, settings.startingHour.Minute, settings.startingHour.Second);
-            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.endingLimit);
+            DateTime calDate = new(settings.CurrentDate.Year, settings.CurrentDate.Month, calculated.Day,
+                settings.StartingHour.Hour, settings.StartingHour.Minute, settings.StartingHour.Second);
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.EndingLimit);
             if (!inLimits)
             {
-                settings.nextExecutionTime = "Next execution over end date limits";
-                settings.isOverLimit = true;
+                settings.NextExecutionTime = "Next execution over end date limits";
+                settings.IsOverLimit = true;
                 return;
             }
-            settings.calculatedDate = calDate;
-            settings.nextExecutionTime = settings.calculatedDate.ToString("dd/MM/yyyy HH:mm");
+            settings.CalculatedDate = calDate;
+            settings.NextExecutionTime = settings.CalculatedDate.ToString("dd/MM/yyyy HH:mm");
         }
 
         public static void ReturnAddedDate(Settings settings,DateTime calculated)
         {
-            settings.currentDate = calculated.AddMonths(settings.monthly2Freq);
+            settings.CurrentDate = calculated.AddMonths(settings.Monthly2Freq);
             DateTime calDate = CalculateNewDay.CalNewDate(settings);
-            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.endingLimit);
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.EndingLimit);
             if (!inLimits)
             {
-                settings.nextExecutionTime = "Next execution over end date limits";
-                settings.isOverLimit = true;
+                settings.NextExecutionTime = "Next execution over end date limits";
+                settings.IsOverLimit = true;
                 return;
             }
-            DateTime newDate = new DateTime(calDate.Year, calDate.Month, calDate.Day,
-                settings.startingHour.Hour,settings.startingHour.Minute, settings.startingHour.Second);
-            settings.calculatedDate = newDate;
-            settings.nextExecutionTime = settings.calculatedDate.ToString("dd/MM/yyyy HH:mm");
+            DateTime newDate = new(calDate.Year, calDate.Month, calDate.Day,
+                settings.StartingHour.Hour,settings.StartingHour.Minute, settings.StartingHour.Second);
+            settings.CalculatedDate = newDate;
+            settings.NextExecutionTime = settings.CalculatedDate.ToString("dd/MM/yyyy HH:mm");
         }
 
         public static void Calculate(Settings settings,DateTime calculatedDay)
         {
             //Calculate the next execution time
-            DateTime calculated = settings.startingHour;
-            while (TimeSpan.Compare(calculated.TimeOfDay, settings.currentDate.TimeOfDay) < 0)
+            DateTime calculated = settings.StartingHour;
+            while (TimeSpan.Compare(calculated.TimeOfDay, settings.CurrentDate.TimeOfDay) < 0)
             {
-                switch (settings.freq)
+                switch (settings.Freq)
                 {
                     case (int)FreqEnum.Frequency.Hours:
-                        calculated = calculated.AddHours(settings.occursEveryFreq);
+                        calculated = calculated.AddHours(settings.OccursEveryFreq);
                         break;
                     case (int)FreqEnum.Frequency.Minutes:
-                        calculated = calculated.AddMinutes(settings.occursEveryFreq);
+                        calculated = calculated.AddMinutes(settings.OccursEveryFreq);
                         break;
                     case (int)FreqEnum.Frequency.Seconds:
-                        calculated = calculated.AddSeconds(settings.occursEveryFreq);
+                        calculated = calculated.AddSeconds(settings.OccursEveryFreq);
                         break;
                 }
-                if (TimeSpan.Compare(calculated.TimeOfDay, settings.endingHour.TimeOfDay) > 0)
+                if (TimeSpan.Compare(calculated.TimeOfDay, settings.EndingHour.TimeOfDay) > 0)
                 {
-                    calculated = settings.endingHour;
+                    calculated = settings.EndingHour;
                     break;
                 }
             }
-            DateTime calDate = new DateTime(settings.currentDate.Year, settings.currentDate.Month, calculatedDay.Day,
+            DateTime calDate = new (settings.CurrentDate.Year, settings.CurrentDate.Month, calculatedDay.Day,
                     calculated.Hour, calculated.Minute, calculated.Second);
-            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.endingLimit);
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.EndingLimit);
             if (!inLimits)
             {
-                settings.nextExecutionTime = "Next execution over end date limits";
-                settings.isOverLimit = true;
+                settings.NextExecutionTime = "Next execution over end date limits";
+                settings.IsOverLimit = true;
                 return;
             }
-            settings.calculatedDate = new DateTime(settings.currentDate.Year, settings.currentDate.Month, calculatedDay.Day,
+            settings.CalculatedDate = new DateTime(settings.CurrentDate.Year, settings.CurrentDate.Month, calculatedDay.Day,
                     calculated.Hour, calculated.Minute, calculated.Second);
-            settings.nextExecutionTime = settings.calculatedDate.ToString("dd/MM/yyyy HH:mm");
+            settings.NextExecutionTime = settings.CalculatedDate.ToString("dd/MM/yyyy HH:mm");
         }
     }
 }

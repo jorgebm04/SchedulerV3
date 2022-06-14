@@ -11,30 +11,30 @@ namespace SchedulerV3.Windows
         {
             nextExecutionTimeTextBox.Text = "";
             descriptionTextBox.Text = "";
-            Settings settings = new Settings
+            Settings settings = new()
             {
-                currentDate = currentDateDateTimePicker.Value,
-                type = typeComboBox.SelectedIndex,
-                onceTimeAt = onceTimeAtDateTimePicker.Value,
-                occurs = occursComboBox.SelectedIndex,
-                day = dayRadioButton.Checked,
-                numDay = (int)numDaysUpDown.Value,
-                numMonths = (int)everyUpDown.Value,
-                the = theRadioButton.Checked,
-                monthlyFreq = monthFrecuencyComboBox.SelectedIndex,
-                dailyFreq = monthDaysComboBox.SelectedIndex,
-                monthly2Freq = (int)ofEveryUpDown.Value,
-                occursOnceAt = occursOnceAtRadioButton.Checked,
-                occursOnceAtHour = occursOnceAtDateTimePicker.Value,
-                occursEvery = occursEveryRadioButton.Checked,
-                occursEveryFreq = (int)occursEveryNumericUpDown.Value,
-                freq = occursEveryComboBox.SelectedIndex,
-                startingHour = startingAtDateTimePicker.Value,
-                endingHour = endingAtDateTimePicker.Value,
-                startingLimit = startLimitDateTimePicker.Value,
-                endingLimit = endLimitDateTimePicker.Value,
-                freqTime = occursEveryComboBox.Text,
-                isOverLimit = false
+                CurrentDate = currentDateDateTimePicker.Value,
+                Type = typeComboBox.SelectedIndex,
+                OnceTimeAt = onceTimeAtDateTimePicker.Value,
+                Occurs = occursComboBox.SelectedIndex,
+                Day = dayRadioButton.Checked,
+                NumDay = (int)numDaysUpDown.Value,
+                NumMonths = (int)everyUpDown.Value,
+                The = theRadioButton.Checked,
+                MonthlyFreq = monthFrecuencyComboBox.SelectedIndex,
+                DailyFreq = monthDaysComboBox.SelectedIndex,
+                Monthly2Freq = (int)ofEveryUpDown.Value,
+                OccursOnceAt = occursOnceAtRadioButton.Checked,
+                OccursOnceAtHour = occursOnceAtDateTimePicker.Value,
+                OccursEvery = occursEveryRadioButton.Checked,
+                OccursEveryFreq = (int)occursEveryNumericUpDown.Value,
+                Freq = occursEveryComboBox.SelectedIndex,
+                StartingHour = startingAtDateTimePicker.Value,
+                EndingHour = endingAtDateTimePicker.Value,
+                StartingLimit = startLimitDateTimePicker.Value,
+                EndingLimit = endLimitDateTimePicker.Value,
+                FreqTime = occursEveryComboBox.Text,
+                IsOverLimit = false
             };
             CheckSettings(settings);
         }
@@ -45,7 +45,7 @@ namespace SchedulerV3.Windows
                 nextExecutionTimeTextBox.Text = "Scheduler not enabled";
                 return;
             }
-            switch (settings.type)
+            switch (settings.Type)
             {
                 case (int)TypeEnum.Types.Once:
                     CheckOnceSettings.CheckSettings(settings);
@@ -54,35 +54,37 @@ namespace SchedulerV3.Windows
                     CheckRecurringSettings.CheckSettings(settings);
                     break;
                 default:
-                    settings.nextExecutionTime = "Please select a type";
+                    settings.NextExecutionTime = "Please select a type";
                     break;
             }
-            nextExecutionTimeTextBox.Text = settings.nextExecutionTime;
-            if (settings.nextExecutionTime.Length == 0)
+            nextExecutionTimeTextBox.Text = settings.NextExecutionTime;
+#pragma warning disable CS8602 // Dereference of a possibly null reference.
+            if (settings.NextExecutionTime.Length == 0)
             {
                 CalculateNextDate(settings);
             }
+#pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
 
         public void CalculateNextDate(Settings settings)
         {
-            switch (settings.type)
+            switch (settings.Type)
             {
                 case (int)TypeEnum.Types.Once:
                     CalculateOnce.CalculateNextExecutionTime(settings);
                     OnceDescription.SetDescription(settings);
                     break;
                 case (int)TypeEnum.Types.Recurring:
-                    CalculateRecurring.calculate(settings);
+                    CalculateRecurring.Calculate(settings);
                     break;
                 default:
                     break;
             }
-            nextExecutionTimeTextBox.Text = settings.nextExecutionTime;
-            descriptionTextBox.Text = settings.description;
+            nextExecutionTimeTextBox.Text = settings.NextExecutionTime;
+            descriptionTextBox.Text = settings.Description;
         }
 
-        private void typeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void TypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (typeComboBox.SelectedIndex == 0)
             {
@@ -120,7 +122,7 @@ namespace SchedulerV3.Windows
             }
         }
         
-        private void occursComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        private void OccursComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(occursComboBox.SelectedIndex == 0)
             {

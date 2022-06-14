@@ -4,10 +4,10 @@
     {
         public static void SetDescription(Settings settings)
         {
-            if (!settings.isOverLimit)
+            if (!settings.IsOverLimit)
             {
-                settings.description = "Occurs every " + settings.numDay + " day, every " + settings.numMonths +
-                " months at " + settings.calculatedDate.ToString("HH:mm") + ", starting on " + settings.startingLimit.ToString("dd/MM/yyyy");
+                settings.Description = "Occurs every " + settings.NumDay + " day, every " + settings.NumMonths +
+                " months at " + settings.CalculatedDate.ToString("HH:mm") + ", starting on " + settings.StartingLimit.ToString("dd/MM/yyyy");
             }   
         }
     }

@@ -28,7 +28,7 @@
 
         public static DateTime CalculateDay(DateTime current, int freq)
         {
-            DateTime pre = new DateTime(current.Year, current.Month, 1);
+            DateTime pre = new (current.Year, current.Month, 1);
             if(freq == 4)
             {
                 return new DateTime(current.Year, current.Month, DateTime.DaysInMonth(current.Year, current.Month));

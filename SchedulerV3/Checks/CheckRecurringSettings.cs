@@ -4,7 +4,7 @@
     {
         public static void CheckSettings(Settings settings)
         {
-            switch (settings.occurs)
+            switch (settings.Occurs)
             {
                 case (int)OccursEnum.Occurs.Daily:
                     CheckDailySettings.CheckRecurringDailySettings(settings);
@@ -13,7 +13,7 @@
                     CheckMonthlySettings.CheckRecurrentMonthlySettings(settings);
                     break;
                 default:
-                    settings.nextExecutionTime = "Select and occurrence.";
+                    settings.NextExecutionTime = "Select and occurrence.";
                     break;
             }
         }

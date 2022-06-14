@@ -4,12 +4,12 @@
     {
         public static void SetDescription(Settings settings)
         {
-            if (!settings.isOverLimit)
+            if (!settings.IsOverLimit)
             {
                 String freq = FreqSetter.SetFreq(settings);
-                settings.description = "Occurs the " + freq + " " + settings.dayOfTheWeek + " of every " + settings.numMonths + " months." +
-                    "Schedule will be used on " + settings.calculatedDate.ToString("dd'/'MM'/'yyyy") + " at " +
-                    settings.calculatedDate.ToString("HH:mm") + " starting on " + settings.startingLimit.ToString("dd'/'MM'/'yyyy");
+                settings.Description = "Occurs the " + freq + " " + settings.DayOfTheWeek + " of every " + settings.NumMonths + " months." +
+                    "Schedule will be used on " + settings.CalculatedDate.ToString("dd'/'MM'/'yyyy") + " at " +
+                    settings.CalculatedDate.ToString("HH:mm") + " starting on " + settings.StartingLimit.ToString("dd'/'MM'/'yyyy");
             }
         }
     }

@@ -12,24 +12,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 0, //First
-                dailyFreq = 0, //Monday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEvery = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 07, 1, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 0, //Monday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEvery = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 07, 1, 0, 0, 0)
             };
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be("Next execution over end date limits");
+            settings.NextExecutionTime.Should().Be("Next execution over end date limits");
         }
 
         //-------------------- IN LIMITS -------------------//
@@ -39,25 +39,25 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 0, //First
-                dailyFreq = 0, //Monday
-                monthly2Freq = 4, //Num Months
-                the = true,
-                occursEvery = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 0, //Monday
+                Monthly2Freq = 4, //Num Months
+                The = true,
+                OccursEvery = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 01, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
         //-------------------------------- FIRST TESTS -----------------------------------//
         [Fact]
@@ -66,25 +66,25 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 0, //First
-                dailyFreq = 0, //Monday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEvery = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 0, //Monday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEvery = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 01, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -93,25 +93,25 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 0, //First
-                dailyFreq = 1, //Tuesday
-                monthly2Freq = 2, //Num Months
-                occursEvery = true,
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 1, //Tuesday
+                Monthly2Freq = 2, //Num Months
+                OccursEvery = true,
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 02, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -120,24 +120,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 0, //First
-                dailyFreq = 2, //Wednesday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 2, //Wednesday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 03, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -146,24 +146,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 0, //First
-                dailyFreq = 3, //Thursday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 3, //Thursday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 04, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -172,24 +172,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 0, //First
-                dailyFreq = 4, //Friday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 4, //Friday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 05, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -198,24 +198,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 0, //First
-                dailyFreq = 5, //Saturday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 5, //Saturday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 06, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -224,24 +224,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 0, //First
-                dailyFreq = 6, //Sunday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 6, //Sunday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 07, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -250,24 +250,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 0, //First
-                dailyFreq = 7, //Day
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 7, //Day
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 01, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -276,24 +276,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 0, //First
-                dailyFreq = 8, //WeekDay
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 8, //WeekDay
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 01, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -302,24 +302,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 0, //First
-                dailyFreq = 9, //WeekendDay
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 9, //WeekendDay
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 06, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         //-------------------------------- SECOND TESTS -----------------------------------//
@@ -329,24 +329,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 1, //Second
-                dailyFreq = 0, //Monday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 1, //Second
+                DailyFreq = 0, //Monday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 13, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -355,24 +355,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 1, //Second
-                dailyFreq = 1, //Tuesday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 1, //Second
+                DailyFreq = 1, //Tuesday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 14, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -381,24 +381,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 1, //second
-                dailyFreq = 2, //Wednesday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 1, //second
+                DailyFreq = 2, //Wednesday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 10, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -407,24 +407,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 1, //second
-                dailyFreq = 3, //Thursday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 1, //second
+                DailyFreq = 3, //Thursday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 09, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         /**
@@ -436,24 +436,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 1, //second
-                dailyFreq = 3, //Thursday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 8, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 1, //second
+                DailyFreq = 3, //Thursday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 8, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 9, 9, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -462,24 +462,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 1, //second
-                dailyFreq = 3, //Thursday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 8, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 8, 30, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 1, //second
+                DailyFreq = 3, //Thursday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 8, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 8, 30, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 9, 8, 30, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -488,24 +488,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 1, //second
-                dailyFreq = 3, //Thursday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 8, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 8, 5, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 1, //second
+                DailyFreq = 3, //Thursday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 8, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 8, 5, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 11, 8, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -514,24 +514,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 1, //second
-                dailyFreq = 4, //Friday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 1, //second
+                DailyFreq = 4, //Friday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 10, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -540,24 +540,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 1, //second
-                dailyFreq = 5, //Saturday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 1, //second
+                DailyFreq = 5, //Saturday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 11, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -566,24 +566,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 1, //second
-                dailyFreq = 6, //Sunday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 1, //second
+                DailyFreq = 6, //Sunday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 12, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -592,24 +592,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 1, //second
-                dailyFreq = 7, //Day
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 1, //second
+                DailyFreq = 7, //Day
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 02, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -618,24 +618,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 1, //second
-                dailyFreq = 8, //WeekDay
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 1, //second
+                DailyFreq = 8, //WeekDay
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 02, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -644,24 +644,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 1, //second
-                dailyFreq = 9, //WeekendDay
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 1, //second
+                DailyFreq = 9, //WeekendDay
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 07, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         //-------------------------------- THIRD TESTS -----------------------------------//
@@ -671,24 +671,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 2, //Third
-                dailyFreq = 0, //Monday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 2, //Third
+                DailyFreq = 0, //Monday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 20, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -697,24 +697,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 2, //Third
-                dailyFreq = 1, //Tuesday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 2, //Third
+                DailyFreq = 1, //Tuesday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 21, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -723,24 +723,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 2, //Third
-                dailyFreq = 2, //Wednesday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 2, //Third
+                DailyFreq = 2, //Wednesday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 15, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -749,24 +749,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 2, //Third
-                dailyFreq = 3, //Thursday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 2, //Third
+                DailyFreq = 3, //Thursday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 16, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -775,24 +775,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 2, //Third
-                dailyFreq = 4, //Friday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 2, //Third
+                DailyFreq = 4, //Friday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 17, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -801,24 +801,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 2, //Third
-                dailyFreq = 5, //Saturday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 2, //Third
+                DailyFreq = 5, //Saturday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 18, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -827,24 +827,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 2, //Third
-                dailyFreq = 6, //Sunday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 2, //Third
+                DailyFreq = 6, //Sunday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 19, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -853,24 +853,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 2, //Third
-                dailyFreq = 7, //Day
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 2, //Third
+                DailyFreq = 7, //Day
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 03, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -879,24 +879,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 2, //Third
-                dailyFreq = 8, //WeekDay
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 2, //Third
+                DailyFreq = 8, //WeekDay
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 03, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -905,24 +905,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 2, //Third
-                dailyFreq = 9, //WeekendDay
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 2, //Third
+                DailyFreq = 9, //WeekendDay
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 11, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         //-------------------------------- FOURTH TESTS -----------------------------------//
@@ -932,24 +932,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 3, //Fourth
-                dailyFreq = 0, //Monday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 3, //Fourth
+                DailyFreq = 0, //Monday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 27, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -958,24 +958,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 3, //Fourth
-                dailyFreq = 1, //Tuesday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 3, //Fourth
+                DailyFreq = 1, //Tuesday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 28, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -984,24 +984,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 3, //Fourth
-                dailyFreq = 2, //Wednesday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 3, //Fourth
+                DailyFreq = 2, //Wednesday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 22, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1010,24 +1010,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 3, //Fourth
-                dailyFreq = 3, //Thursday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 3, //Fourth
+                DailyFreq = 3, //Thursday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 23, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1036,24 +1036,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 3, //Fourth
-                dailyFreq = 4, //Friday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 3, //Fourth
+                DailyFreq = 4, //Friday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 24, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1062,24 +1062,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 3, //Fourth
-                dailyFreq = 5, //Saturday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 3, //Fourth
+                DailyFreq = 5, //Saturday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 25, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1088,24 +1088,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 3, //Fourth
-                dailyFreq = 6, //Sunday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 3, //Fourth
+                DailyFreq = 6, //Sunday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 26, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1114,24 +1114,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 3, //Fourth
-                dailyFreq = 7, //Day
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 3, //Fourth
+                DailyFreq = 7, //Day
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 04, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1140,24 +1140,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 3, //Fourth
-                dailyFreq = 8, //WeekDay
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 3, //Fourth
+                DailyFreq = 8, //WeekDay
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 04, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1166,24 +1166,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 3, //Fourth
-                dailyFreq = 9, //WeekendDay
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 3, //Fourth
+                DailyFreq = 9, //WeekendDay
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 12, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         //-------------------------------- LAST TESTS -----------------------------------//
@@ -1193,24 +1193,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 4, //Last
-                dailyFreq = 0, //Monday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 4, //Last
+                DailyFreq = 0, //Monday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 27, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1219,24 +1219,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 4, //Last
-                dailyFreq = 1, //Tuesday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 4, //Last
+                DailyFreq = 1, //Tuesday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 28, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1245,24 +1245,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 4, //Last
-                dailyFreq = 2, //Wednesday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 4, //Last
+                DailyFreq = 2, //Wednesday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 29, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1271,24 +1271,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 4, //Last
-                dailyFreq = 3, //Thursday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 4, //Last
+                DailyFreq = 3, //Thursday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 30, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1297,24 +1297,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 4, //Last
-                dailyFreq = 4, //Friday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 4, //Last
+                DailyFreq = 4, //Friday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 24, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1323,24 +1323,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 4, //Last
-                dailyFreq = 5, //Saturday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 4, //Last
+                DailyFreq = 5, //Saturday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 25, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1349,24 +1349,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 4, //Last
-                dailyFreq = 6, //Sunday
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 4, //Last
+                DailyFreq = 6, //Sunday
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 26, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1375,24 +1375,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 4, //Fourth
-                dailyFreq = 7, //Day
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 4, //Fourth
+                DailyFreq = 7, //Day
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 30, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1401,24 +1401,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 4, //Last
-                dailyFreq = 8, //WeekDay
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 4, //Last
+                DailyFreq = 8, //WeekDay
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 30, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
 
         [Fact]
@@ -1427,24 +1427,24 @@ namespace SchedulerV3.Test.Calculates_Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
-                occurs = 1,
-                monthlyFreq = 4, //Last
-                dailyFreq = 9, //WeekendDay
-                monthly2Freq = 2, //Num Months
-                the = true,
-                occursEveryFreq = 1,
-                freq = 0,
-                startingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
-                endingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
-                startingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 4, //Last
+                DailyFreq = 9, //WeekendDay
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursEveryFreq = 1,
+                Freq = 0,
+                StartingHour = new System.DateTime(2000, 01, 01, 10, 0, 0),
+                EndingHour = new System.DateTime(2000, 01, 01, 16, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 26, 10, 0, 0);
             //Act
-            CalculateRecurring.calculate(settings);
+            CalculateRecurring.Calculate(settings);
             //Assert
-            settings.nextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
         }
     }
 }

@@ -11,11 +11,11 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                monthlyFreq = 1
+                MonthlyFreq = 1
                
             };
             //Act
-            bool result = MonthFrequencyChecker.CheckMonthFrequency(settings.monthlyFreq);
+            bool result = MonthFrequencyChecker.CheckMonthFrequency(settings.MonthlyFreq);
             //Assert
             result.Should().BeTrue();
         }
@@ -26,11 +26,11 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                monthlyFreq = -1
+                MonthlyFreq = -1
 
             };
             //Act
-            bool result = MonthFrequencyChecker.CheckMonthFrequency(settings.monthlyFreq);
+            bool result = MonthFrequencyChecker.CheckMonthFrequency(settings.MonthlyFreq);
             //Assert
             result.Should().BeFalse();
         }
@@ -41,11 +41,11 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                dailyFreq = 1
+                DailyFreq = 1
 
             };
             //Act
-            bool result = DayFrequencyChecker.CheckDayFrequency(settings.dailyFreq);
+            bool result = DayFrequencyChecker.CheckDayFrequency(settings.DailyFreq);
             //Assert
             result.Should().BeTrue();
         }
@@ -56,11 +56,11 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                dailyFreq = -1
+                DailyFreq = -1
 
             };
             //Act
-            bool result = DayFrequencyChecker.CheckDayFrequency(settings.dailyFreq);
+            bool result = DayFrequencyChecker.CheckDayFrequency(settings.DailyFreq);
             //Assert
             result.Should().BeFalse();
         }
@@ -71,11 +71,11 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 05, 20, 15, 0, 0),
-                occursOnceAtHour = new System.DateTime(2022, 05, 30, 15, 0, 0)
+                CurrentDate = new System.DateTime(2022, 05, 20, 15, 0, 0),
+                OccursOnceAtHour = new System.DateTime(2022, 05, 30, 15, 0, 0)
             };
             //Act
-            bool result = NeedToAddDaysChecker.CheckNeedToAddDays(settings.currentDate,settings.occursOnceAtHour);
+            bool result = NeedToAddDaysChecker.CheckNeedToAddDays(settings.CurrentDate,settings.OccursOnceAtHour);
             //Assert
             result.Should().BeFalse();
         }
@@ -86,11 +86,11 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 05, 20, 15, 0, 0),
-                occursOnceAtHour = new System.DateTime(2022, 05, 10, 13, 0, 0)
+                CurrentDate = new System.DateTime(2022, 05, 20, 15, 0, 0),
+                OccursOnceAtHour = new System.DateTime(2022, 05, 10, 13, 0, 0)
             };
             //Act
-            bool result = NeedToAddDaysChecker.CheckNeedToAddDays(settings.currentDate, settings.occursOnceAtHour);
+            bool result = NeedToAddDaysChecker.CheckNeedToAddDays(settings.CurrentDate, settings.OccursOnceAtHour);
             //Assert
             result.Should().BeTrue();
         }
@@ -101,11 +101,11 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                startingLimit = new System.DateTime(2022, 05, 10, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 05, 30, 0, 0, 0)
+                StartingLimit = new System.DateTime(2022, 05, 10, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 05, 30, 0, 0, 0)
             };
             //Act
-            bool result = RecurringLimitsChecker.CheckLimits(settings.startingLimit, settings.endingLimit);
+            bool result = RecurringLimitsChecker.CheckLimits(settings.StartingLimit, settings.EndingLimit);
             //Assert
             result.Should().BeTrue();
         }
@@ -116,11 +116,11 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                startingLimit = new System.DateTime(2022, 05, 30, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 05, 10, 0, 0, 0)
+                StartingLimit = new System.DateTime(2022, 05, 30, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 05, 10, 0, 0, 0)
             };
             //Act
-            bool result = RecurringLimitsChecker.CheckLimits(settings.startingLimit, settings.endingLimit);
+            bool result = RecurringLimitsChecker.CheckLimits(settings.StartingLimit, settings.EndingLimit);
             //Assert
             result.Should().BeFalse();
         }
@@ -131,12 +131,12 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 05, 20, 0, 0, 0),
-                startingLimit = new System.DateTime(2022, 05, 10, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 05, 30, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 05, 20, 0, 0, 0),
+                StartingLimit = new System.DateTime(2022, 05, 10, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 05, 30, 0, 0, 0)
             };
             //Act
-            bool result = RecurringLimitsChecker.CheckLimitsWithCurrentDate(settings.startingLimit, settings.endingLimit, settings.currentDate);
+            bool result = RecurringLimitsChecker.CheckLimitsWithCurrentDate(settings.StartingLimit, settings.EndingLimit, settings.CurrentDate);
             //Assert
             result.Should().BeTrue();
         }
@@ -147,12 +147,12 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 05, 05, 0, 0, 0),
-                startingLimit = new System.DateTime(2022, 05, 30, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 05, 10, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 05, 05, 0, 0, 0),
+                StartingLimit = new System.DateTime(2022, 05, 30, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 05, 10, 0, 0, 0)
             };
             //Act
-            bool result = RecurringLimitsChecker.CheckLimits(settings.startingLimit, settings.endingLimit);
+            bool result = RecurringLimitsChecker.CheckLimits(settings.StartingLimit, settings.EndingLimit);
             //Assert
             result.Should().BeFalse();
         }
@@ -163,12 +163,12 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                currentDate = new System.DateTime(2022, 06, 05, 0, 0, 0),
-                startingLimit = new System.DateTime(2022, 05, 30, 0, 0, 0),
-                endingLimit = new System.DateTime(2022, 05, 10, 0, 0, 0)
+                CurrentDate = new System.DateTime(2022, 06, 05, 0, 0, 0),
+                StartingLimit = new System.DateTime(2022, 05, 30, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 05, 10, 0, 0, 0)
             };
             //Act
-            bool result = RecurringLimitsChecker.CheckLimits(settings.startingLimit, settings.endingLimit);
+            bool result = RecurringLimitsChecker.CheckLimits(settings.StartingLimit, settings.EndingLimit);
             //Assert
             result.Should().BeFalse();
         }
@@ -179,10 +179,10 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                occursEveryFreq = 0
+                OccursEveryFreq = 0
             };
             //Act
-            bool result = OccursEveryChecker.CheckOccursEveryComboBox(settings.occursEveryFreq);
+            bool result = OccursEveryChecker.CheckOccursEveryComboBox(settings.OccursEveryFreq);
             //Assert
             result.Should().BeTrue();
         }
@@ -193,10 +193,10 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                occursEveryFreq = -1
+                OccursEveryFreq = -1
             };
             //Act
-            bool result = OccursEveryChecker.CheckOccursEveryComboBox(settings.occursEveryFreq);
+            bool result = OccursEveryChecker.CheckOccursEveryComboBox(settings.OccursEveryFreq);
             //Assert
             result.Should().BeFalse();
         }
@@ -207,11 +207,11 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                startingHour = new System.DateTime(2022, 06, 05, 10, 0, 0),
-                endingHour = new System.DateTime(2022, 06, 05, 15, 0, 0)
+                StartingHour = new System.DateTime(2022, 06, 05, 10, 0, 0),
+                EndingHour = new System.DateTime(2022, 06, 05, 15, 0, 0)
             };
             //Act
-            bool result = OccursEveryChecker.CheckOccursEveryLimits(settings.startingHour, settings.endingHour);
+            bool result = OccursEveryChecker.CheckOccursEveryLimits(settings.StartingHour, settings.EndingHour);
             //Assert
             result.Should().BeTrue();
         }
@@ -222,11 +222,11 @@ namespace SchedulerV3.Test
             //Arrange
             var settings = new Settings
             {
-                startingHour = new System.DateTime(2022, 06, 05, 16, 0, 0),
-                endingHour = new System.DateTime(2022, 06, 05, 15, 0, 0)
+                StartingHour = new System.DateTime(2022, 06, 05, 16, 0, 0),
+                EndingHour = new System.DateTime(2022, 06, 05, 15, 0, 0)
             };
             //Act
-            bool result = OccursEveryChecker.CheckOccursEveryLimits(settings.startingHour, settings.endingHour);
+            bool result = OccursEveryChecker.CheckOccursEveryLimits(settings.StartingHour, settings.EndingHour);
             //Assert
             result.Should().BeFalse();
         }

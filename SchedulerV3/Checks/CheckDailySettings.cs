@@ -4,28 +4,28 @@
     {
         public static void CheckRecurringDailySettings(Settings settings)
         {
-            if (settings.occursOnceAt)
+            if (settings.OccursOnceAt)
             {
-                settings.needToAddDay = NeedToAddDaysChecker.CheckNeedToAddDays(settings.currentDate, settings.occursOnceAtHour);
-            } else if (settings.occursEvery)
+                settings.NeedToAddDay = NeedToAddDaysChecker.CheckNeedToAddDays(settings.CurrentDate, settings.OccursOnceAtHour);
+            } else if (settings.OccursEvery)
             {
-                settings.needToAddDay = NeedToAddDaysChecker.CheckNeedToAddDays(settings.currentDate, settings.endingHour);
+                settings.NeedToAddDay = NeedToAddDaysChecker.CheckNeedToAddDays(settings.CurrentDate, settings.EndingHour);
                 bool freq = CheckOccursEveryFreq(settings);
                 if (!freq)
                 {
-                    settings.nextExecutionTime = "Select a frequency for the daily frequency";
+                    settings.NextExecutionTime = "Select a frequency for the daily frequency";
                     return;
                 }
                 bool freqLimits = CheckOccursEveryLimits(settings);
                 if (!freqLimits)
                 {
-                    settings.nextExecutionTime = "Limits in the daily frequency not correct";
+                    settings.NextExecutionTime = "Limits in the daily frequency not correct";
                     return;
                 }
             }
             else
             {
-                settings.nextExecutionTime = "Select a type for daily frequency.";
+                settings.NextExecutionTime = "Select a type for daily frequency.";
                 return;
             }
             CheckLimits(settings);
@@ -33,31 +33,31 @@
 
         public static bool CheckOccursEveryFreq(Settings settings)
         {
-            bool occurs = OccursEveryChecker.CheckOccursEveryComboBox(settings.freq);
+            bool occurs = OccursEveryChecker.CheckOccursEveryComboBox(settings.Freq);
             return occurs;
         }
 
         public static bool CheckOccursEveryLimits(Settings settings)
         {
-            bool occursLimits = OccursEveryChecker.CheckOccursEveryLimits(settings.startingHour, settings.endingHour);
+            bool occursLimits = OccursEveryChecker.CheckOccursEveryLimits(settings.StartingHour, settings.EndingHour);
             return occursLimits;
         }
 
         public static void CheckLimits(Settings settings)
         {
-            bool limits = RecurringLimitsChecker.CheckLimits(settings.startingLimit, settings.endingLimit);
+            bool limits = RecurringLimitsChecker.CheckLimits(settings.StartingLimit, settings.EndingLimit);
             if (!limits)
             {
-                settings.nextExecutionTime = "Not correct limits";
+                settings.NextExecutionTime = "Not correct limits";
                 return;
             }
-            bool currentDateInLimits = RecurringLimitsChecker.CheckLimitsWithCurrentDate(settings.startingLimit, settings.endingLimit, settings.currentDate);
+            bool currentDateInLimits = RecurringLimitsChecker.CheckLimitsWithCurrentDate(settings.StartingLimit, settings.EndingLimit, settings.CurrentDate);
             if (!currentDateInLimits)
             {
-                settings.nextExecutionTime = "Current date not in the limits";
+                settings.NextExecutionTime = "Current date not in the limits";
                 return;
             }
-            settings.nextExecutionTime = "";
+            settings.NextExecutionTime = "";
         }
     }
 }
