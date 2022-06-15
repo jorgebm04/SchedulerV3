@@ -16,9 +16,8 @@
                     CalculateEveryRecurring.CalculateNextExecutionTime(settings);
                     EveryRecurringDescription.SetDescription(settings);
                 }
-            }
-            
-            else if (settings.Occurs == 1)
+            }          
+            else 
             {
                 if (settings.Day)
                 {

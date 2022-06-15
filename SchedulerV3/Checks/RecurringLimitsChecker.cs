@@ -1,6 +1,6 @@
 ﻿namespace SchedulerV3
 {
-    public class RecurringLimitsChecker
+    public static class RecurringLimitsChecker
     {
         public static bool CheckLimits(DateTime start, DateTime end)
         {

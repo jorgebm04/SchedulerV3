@@ -31,7 +31,12 @@ namespace SchedulerV3
         public DateTime CalculatedDate { get; set; }
         public bool NeedToAddDay { get; set; }
         public int LastDay { get; set; }
-        public SortedList days = new();
+        private SortedList days = new();
+        public SortedList Days
+        {
+            get { return days; }
+            set { days = value; }
+        }
         public String? DayOfTheWeek { get; set; }
         public bool IsOverLimit { get; set; }
     }

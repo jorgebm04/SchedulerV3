@@ -15,31 +15,26 @@
                 if (DateTime.Compare(calculatedDate, settings.CurrentDate) > 0)
                 {
                     ReturnNormalDate(settings, calculatedDate);
-                    return;
                 }
                 else if (calculatedDate.ToString("dd/MM/yyyy").Equals(settings.CurrentDate.ToString("dd/MM/yyyy")))
                 {
                     if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.StartingHour.TimeOfDay) < 0)
                     {
                         ReturnNormalDate(settings, calculatedDate);
-                        return;
                     }
                     else if ((TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.StartingHour.TimeOfDay) > 0) &&
                         TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.EndingHour.TimeOfDay) < 0)
                     {
                         Calculate(settings, calculatedDate);
-                        return;
                     }
                     else if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.EndingHour.TimeOfDay) > 0)
                     {
                         ReturnAddedDate(settings, calculatedDate);
-                        return;
                     }
                 }
                 else
                 {
                     ReturnAddedDate(settings, calculatedDate);
-                    return;
                 }
             }
         }

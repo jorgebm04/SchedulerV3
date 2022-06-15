@@ -1,6 +1,6 @@
 ﻿namespace SchedulerV3
 {
-    public class OccursEveryChecker
+    public static class OccursEveryChecker
     {
         public static bool CheckOccursEveryComboBox (int index)
         {

@@ -14,31 +14,26 @@
                 if (settings.NumDay > settings.CurrentDate.Day)
                 {
                     ReturnNormalDate(settings);
-                    return;
                 }
                 else if (settings.NumDay == settings.CurrentDate.Day)
                 {
                     if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.StartingHour.TimeOfDay) < 0)
                     {
                         ReturnNormalDate(settings);
-                        return;
                     }
                     else if ((TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.StartingHour.TimeOfDay) > 0) &&
                         TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.EndingHour.TimeOfDay) < 0)
                     {
                         Calculate(settings);
-                        return;
                     }
                     else if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.EndingHour.TimeOfDay) > 0)
                     {
                         ReturnAddedDate(settings);
-                        return;
                     }
                 }
                 else
                 {
                     ReturnAddedDate(settings);
-                    return;
                 }
             }     
         }

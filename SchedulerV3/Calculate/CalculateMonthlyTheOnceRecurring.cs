@@ -15,25 +15,21 @@
                 if (DateTime.Compare(calculatedDate, settings.CurrentDate) > 0)
                 {
                     ReturnNormalDate(settings, calculatedDate);
-                    return;
                 }
                 else if (calculatedDate.ToString("dd/MM/yyyy").Equals(settings.CurrentDate.ToString("dd/MM/yyyy")))
                 {
                     if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.OccursOnceAtHour.TimeOfDay) < 0)
                     {
                         ReturnNormalDate(settings, calculatedDate);
-                        return;
                     }
-                    if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.OccursOnceAtHour.TimeOfDay) > 0)
+                    else
                     {
                         ReturnAddedDate(settings, calculatedDate);
-                        return;
                     }
                 }
                 else
                 {
                     ReturnAddedDate(settings, calculatedDate);
-                    return;
                 }
             }        
         }

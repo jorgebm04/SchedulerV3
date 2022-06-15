@@ -20,18 +20,15 @@
                     if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.OccursOnceAtHour.TimeOfDay) < 0)
                     {
                         ReturnNormalDate(settings);
-                        return;
                     }
-                    if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.OccursOnceAtHour.TimeOfDay) > 0)
+                    else 
                     {
                         ReturnAddedDate(settings);
-                        return;
                     }
                 }
                 else
                 {
                     ReturnAddedDate(settings);
-                    return;
                 }
             }
         }

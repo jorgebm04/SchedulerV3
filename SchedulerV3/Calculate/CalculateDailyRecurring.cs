@@ -1,6 +1,6 @@
 ﻿namespace SchedulerV3
 {
-    public class CalculateDailyRecurring
+    public static class CalculateDailyRecurring
     {
         public static void CalculateNextExecutionTime(Settings settings)
         {
