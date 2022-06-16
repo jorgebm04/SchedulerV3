@@ -1,4 +1,4 @@
-﻿namespace SchedulerV3
+﻿namespace SchedulerV3.Calculate
 {
     public static class CalculateEveryRecurring
     {
@@ -14,14 +14,14 @@
             Calculate(settings);
         }
 
-        public static void Calculate(Settings settings)
+        private static void Calculate(Settings settings)
         {
             //Calculate the next execution time
             DateTime calculated = CalculateEvery.Calculate(settings);
             SetNextExecutionTime(settings, calculated);
         }
 
-        public static void SetNextExecutionTime(Settings settings, DateTime calculated)
+        private static void SetNextExecutionTime(Settings settings, DateTime calculated)
         {
             settings.NextExecutionTime = settings.CurrentDate.ToString("dd/MM/yyyy") + " " + calculated.ToString("HH:mm");
             settings.CalculatedDate = DateTime.ParseExact(settings.NextExecutionTime, "dd/MM/yyyy HH:mm", null);

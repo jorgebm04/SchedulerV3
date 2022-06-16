@@ -1,6 +1,6 @@
-﻿namespace SchedulerV3
+﻿namespace SchedulerV3.Enums
 {
-    public class FreqEnum
+    public static class FreqEnum
     {
         public enum Frequency
         {

@@ -1,14 +1,13 @@
-﻿namespace SchedulerV3
+﻿namespace SchedulerV3.Enums
 {
-    public class OccursDayEnum
+    public static class OccursDayEnum
     {
         public enum OccursDay
         {
-            first,
-            second,
-            third,
-            fourth,
-            last
+            First,
+            Second,
+            Third,
+            Fourth
         }
     }
 }

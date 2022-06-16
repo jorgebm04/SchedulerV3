@@ -1,4 +1,4 @@
-﻿namespace SchedulerV3
+﻿namespace SchedulerV3.Checks
 {
     public static class CheckDailySettings
     {
@@ -31,19 +31,19 @@
             CheckLimits(settings);
         }
 
-        public static bool CheckOccursEveryFreq(Settings settings)
+        private static bool CheckOccursEveryFreq(Settings settings)
         {
             bool occurs = OccursEveryChecker.CheckOccursEveryComboBox(settings.Freq);
             return occurs;
         }
 
-        public static bool CheckOccursEveryLimits(Settings settings)
+        private static bool CheckOccursEveryLimits(Settings settings)
         {
             bool occursLimits = OccursEveryChecker.CheckOccursEveryLimits(settings.StartingHour, settings.EndingHour);
             return occursLimits;
         }
 
-        public static void CheckLimits(Settings settings)
+        private static void CheckLimits(Settings settings)
         {
             bool limits = RecurringLimitsChecker.CheckLimits(settings.StartingLimit, settings.EndingLimit);
             if (!limits)

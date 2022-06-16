@@ -1,5 +1,6 @@
 ﻿using Xunit;
 using FluentAssertions;
+using SchedulerV3.Calculate;
 
 namespace SchedulerV3.Test.Calculates_Test
 {
@@ -297,7 +298,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_first_weekendday()
+        public void Validate_calculated_date_type_recurring_monthly_first_weekend_day()
         {
             //Arrange
             var settings = new Settings
@@ -639,7 +640,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_second_weekendday()
+        public void Validate_calculated_date_type_recurring_monthly_second_weekend_day()
         {
             //Arrange
             var settings = new Settings
@@ -900,7 +901,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_third_weekendday()
+        public void Validate_calculated_date_type_recurring_monthly_third_weekend_day()
         {
             //Arrange
             var settings = new Settings
@@ -1161,7 +1162,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_fourth_weekendday()
+        public void Validate_calculated_date_type_recurring_monthly_fourth_weekend_day()
         {
             //Arrange
             var settings = new Settings
@@ -1422,7 +1423,7 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
-        public void Validate_calculated_date_type_recurring_monthly_last_weekendday()
+        public void Validate_calculated_date_type_recurring_monthly_last_weekend_day()
         {
             //Arrange
             var settings = new Settings

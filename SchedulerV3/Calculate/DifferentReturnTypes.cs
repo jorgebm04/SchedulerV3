@@ -1,15 +1,26 @@
-﻿namespace SchedulerV3
+﻿using SchedulerV3.Checks;
+
+namespace SchedulerV3.Calculate
 {
     public static class DifferentReturnTypes
     {
-        public static bool ReturnDateThe(Settings settings, int rest)
+        public static void ReturnDateThe(Settings settings, int rest)
         {
-            int newMonth = (settings.CurrentDate.Month - rest) + settings.Monthly2Freq;
-            if (settings.OccursOnceAt)
+            int newMonth;
+            if (settings.Day)
             {
+                newMonth = (settings.CurrentDate.Month - rest) + settings.NumMonths;
+            }
+            else
+            {
+                newMonth = (settings.CurrentDate.Month - rest) + settings.Monthly2Freq;
+            }
+            if (settings.OccursOnceAt)
+            {             
                 settings.CurrentDate = new DateTime(settings.CurrentDate.Year, newMonth, 1,
                 settings.OccursOnceAtHour.Hour, settings.OccursOnceAtHour.Minute, settings.OccursOnceAtHour.Second);
-            } else 
+            } 
+            else 
             {
                 settings.CurrentDate = new DateTime(settings.CurrentDate.Year, newMonth, 1,
                 settings.StartingHour.Hour, settings.StartingHour.Minute, settings.StartingHour.Second);
@@ -20,14 +31,13 @@
             {
                 settings.NextExecutionTime = "Next execution over end date limits";
                 settings.IsOverLimit = true;
-                return false;
+                return;
             }
             settings.CalculatedDate = calDate;
             settings.NextExecutionTime = settings.CalculatedDate.ToString("dd/MM/yyyy HH:mm");
-            return true;
         }
 
-        public static bool ReturnNormalDateThe(Settings settings, DateTime calculated)
+        public static void ReturnNormalDateThe(Settings settings, DateTime calculated)
         {
             DateTime calDate;
             if (settings.OccursOnceAt)
@@ -45,14 +55,13 @@
             {
                 settings.NextExecutionTime = "Next execution over end date limits";
                 settings.IsOverLimit = true;
-                return false;
+                return;
             }
             settings.CalculatedDate = calDate;
             settings.NextExecutionTime = settings.CalculatedDate.ToString("dd/MM/yyyy HH:mm");
-            return true;
         }
 
-        public static bool ReturnAddedDateThe(Settings settings, DateTime calculated)
+        public static void ReturnAddedDateThe(Settings settings, DateTime calculated)
         {
             settings.CurrentDate = calculated.AddMonths(settings.Monthly2Freq);
             DateTime calDate = CalculateNewDay.CalNewDate(settings);
@@ -61,7 +70,7 @@
             {
                 settings.NextExecutionTime = "Next execution over end date limits";
                 settings.IsOverLimit = true;
-                return false;
+                return;
             }
             DateTime newDate;
             if (settings.OccursOnceAt)
@@ -76,7 +85,89 @@
             }
             settings.CalculatedDate = newDate;
             settings.NextExecutionTime = settings.CalculatedDate.ToString("dd/MM/yyyy HH:mm");
-            return true;
+        }
+
+        public static void ReturnDateDay(Settings settings, int rest)
+        {
+            int newMonth;
+            if (settings.Day)
+            {
+                newMonth = (settings.CurrentDate.Month - rest) + settings.NumMonths;
+            }
+            else
+            {
+                newMonth = (settings.CurrentDate.Month - rest) + settings.Monthly2Freq;
+            }
+            DateTime calDate;
+            if (settings.OccursOnceAt)
+            {
+                calDate = new DateTime(settings.CurrentDate.Year, newMonth, settings.NumDay,
+                settings.OccursOnceAtHour.Hour, settings.OccursOnceAtHour.Minute, settings.OccursOnceAtHour.Second);
+            }
+            else
+            {
+                calDate = new DateTime(settings.CurrentDate.Year, newMonth, settings.NumDay,
+                settings.StartingHour.Hour, settings.StartingHour.Minute, settings.StartingHour.Second);
+            }
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.EndingLimit);
+            if (!inLimits)
+            {
+                settings.NextExecutionTime = "Next execution over end date limits";
+                settings.IsOverLimit = true;
+                return;
+            }
+            settings.CalculatedDate = calDate;
+            settings.NextExecutionTime = settings.CalculatedDate.ToString("dd/MM/yyyy HH:mm");
+        }
+
+        public static void ReturnNormalDateDay(Settings settings)
+        {
+            DateTime calDate;
+            if (settings.OccursOnceAt)
+            {
+                calDate = new(settings.CurrentDate.Year, settings.CurrentDate.Month, settings.NumDay,
+                    settings.OccursOnceAtHour.Hour, settings.OccursOnceAtHour.Minute, settings.OccursOnceAtHour.Second);
+            }
+            else
+            {
+                calDate = new(settings.CurrentDate.Year, settings.CurrentDate.Month, settings.NumDay,
+                    settings.StartingHour.Hour, settings.StartingHour.Minute, settings.StartingHour.Second);
+            }
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.EndingLimit);
+            if (!inLimits)
+            {
+                settings.NextExecutionTime = "Next execution over end date limits";
+                settings.IsOverLimit = true;
+                return;
+            }
+            settings.CalculatedDate = calDate;
+            settings.NextExecutionTime = settings.CalculatedDate.ToString("dd/MM/yyyy HH:mm");
+        }
+
+        public static void ReturnAddedDateDay(Settings settings)
+        {
+            DateTime calDate;
+            if (settings.OccursOnceAt)
+            {
+                calDate = new (settings.CurrentDate.Year, settings.CurrentDate.Month, settings.NumDay,
+                    settings.OccursOnceAtHour.Hour, settings.OccursOnceAtHour.Minute, settings.OccursOnceAtHour.Second);
+            }
+            else
+            {
+                calDate = new (settings.CurrentDate.Year, settings.CurrentDate.Month, settings.NumDay,
+                    settings.StartingHour.Hour, settings.StartingHour.Minute, settings.StartingHour.Second);
+            }
+            
+            calDate = calDate.AddMonths(settings.NumMonths);
+            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.EndingLimit);
+            if (!inLimits)
+            {
+                settings.NextExecutionTime = "Next execution over end date limits";
+                settings.IsOverLimit = true;
+                return;
+            }
+            settings.CalculatedDate = calDate;
+            settings.NextExecutionTime = settings.CalculatedDate.ToString("dd/MM/yyyy HH:mm");
         }
     }
 }

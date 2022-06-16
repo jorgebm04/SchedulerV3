@@ -1,6 +1,6 @@
-﻿namespace SchedulerV3
+﻿namespace SchedulerV3.Enums
 {
-    public class TypeEnum
+    public static class TypeEnum
     {
         public enum Types
         {

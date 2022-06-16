@@ -1,4 +1,6 @@
-﻿namespace SchedulerV3
+﻿using SchedulerV3.Enums;
+
+namespace SchedulerV3.Checks
 {
     public static class CheckRecurringSettings
     {

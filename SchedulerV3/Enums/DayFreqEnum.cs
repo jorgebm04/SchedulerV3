@@ -1,19 +1,18 @@
-﻿namespace SchedulerV3
+﻿namespace SchedulerV3.Enums
 {
-    public class DayFreqEnum
+    public static class DayFreqEnum
     {
         public enum DayFreq
         {
-            monday,
-            tuesday,
-            wednesday,
-            thursday,
-            friday,
-            saturday,
-            sunday,
-            day,
-            weekday,
-            weekendday
+            Monday,
+            Tuesday,
+            Wednesday,
+            Thursday,
+            Friday,
+            Saturday,
+            Sunday,
+            Day,
+            Weekday
         }
     }
 }

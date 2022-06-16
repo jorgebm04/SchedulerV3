@@ -1,39 +1,30 @@
-﻿namespace SchedulerV3
+﻿using SchedulerV3.Checks;
+
+namespace SchedulerV3.Calculate
 {
     public static class CalculateMonthlyTheEveryRecurring
     {
         public static void CalculateNextExecutionTime(Settings settings)
         {
-            bool correctLimit;
             int rest = settings.CurrentDate.Month % settings.Monthly2Freq;
             if (rest != 0)
             {
-                correctLimit = DifferentReturnTypes.ReturnDateThe(settings, rest);
-                if (!correctLimit)
-                {
-                    return;
-                }
+                DifferentReturnTypes.ReturnDateThe(settings, rest);               
             }
             else
             {
                 DateTime calculatedDate = CalculateNewDay.CalNewDate(settings);
                 if (DateTime.Compare(calculatedDate, settings.CurrentDate) > 0)
                 {
-                    correctLimit = DifferentReturnTypes.ReturnNormalDateThe(settings, calculatedDate);
-                    if (!correctLimit)
-                    {
-                        return;
-                    }
+                    DifferentReturnTypes.ReturnNormalDateThe(settings, calculatedDate);
+                    
                 }
                 else if (calculatedDate.ToString("dd/MM/yyyy").Equals(settings.CurrentDate.ToString("dd/MM/yyyy")))
                 {
                     if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.StartingHour.TimeOfDay) < 0)
                     {
-                        correctLimit = DifferentReturnTypes.ReturnNormalDateThe(settings, calculatedDate);
-                        if (!correctLimit)
-                        {
-                            return;
-                        }
+                        DifferentReturnTypes.ReturnNormalDateThe(settings, calculatedDate);
+                        
                     }
                     else if ((TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.StartingHour.TimeOfDay) > 0) &&
                         TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.EndingHour.TimeOfDay) < 0)
@@ -42,25 +33,18 @@
                     }
                     else if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.EndingHour.TimeOfDay) > 0)
                     {
-                        correctLimit = DifferentReturnTypes.ReturnAddedDateThe(settings, calculatedDate);
-                        if (!correctLimit)
-                        {
-                            return;
-                        }
+                        DifferentReturnTypes.ReturnAddedDateThe(settings, calculatedDate);
+                        
                     }
                 }
                 else
                 {
-                    correctLimit = DifferentReturnTypes.ReturnAddedDateThe(settings, calculatedDate);
-                    if (!correctLimit)
-                    {
-                        return;
-                    }
+                    DifferentReturnTypes.ReturnAddedDateThe(settings, calculatedDate);  
                 }
             }
         }
 
-        public static void Calculate(Settings settings,DateTime calculatedDay)
+        private static void Calculate(Settings settings,DateTime calculatedDay)
         {
             //Calculate the next execution time
             DateTime calculated = CalculateEvery.Calculate(settings);

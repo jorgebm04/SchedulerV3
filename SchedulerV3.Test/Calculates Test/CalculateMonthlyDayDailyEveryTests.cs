@@ -1,5 +1,6 @@
 ﻿using Xunit;
 using FluentAssertions;
+using SchedulerV3.Calculate;
 
 namespace SchedulerV3.Test.Calculates_Test
 {

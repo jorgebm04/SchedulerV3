@@ -1,4 +1,6 @@
-﻿namespace SchedulerV3
+﻿using SchedulerV3.Descriptions;
+
+namespace SchedulerV3.Calculate
 {
     public static class CalculateRecurring
     {

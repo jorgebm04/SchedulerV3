@@ -1,31 +1,29 @@
-﻿using System.Collections;
-
-namespace SchedulerV3
+﻿namespace SchedulerV3
 {
     public class Settings
     {
         public DateTime CurrentDate { get; set; }
-        public int Type { get; set; }
+        public int Type { get; init; }
         public bool Enabled { get; set; }
-        public DateTime OnceTimeAt { get; set; }
-        public int Occurs { get; set; }
-        public bool Day { get; set; }
-        public int NumDay { get; set; }
-        public int NumMonths { get; set; }
-        public bool The { get; set; }
-        public int MonthlyFreq { get; set; }
-        public int DailyFreq { get; set; }
-        public int Monthly2Freq { get; set; }
-        public bool OccursOnceAt { get; set; }
-        public DateTime OccursOnceAtHour { get; set; }
-        public bool OccursEvery { get; set; }
-        public int OccursEveryFreq { get; set; }
-        public int Freq { get; set; }
-        public string? FreqTime { get; set; }
-        public DateTime StartingHour { get; set; }
-        public DateTime EndingHour { get; set; }
-        public DateTime StartingLimit { get; set; }
-        public DateTime EndingLimit { get; set; }
+        public DateTime OnceTimeAt { get; init; }
+        public int Occurs { get; init; }
+        public bool Day { get; init; }
+        public int NumDay { get; init; }
+        public int NumMonths { get; init; }
+        public bool The { get; init; }
+        public int MonthlyFreq { get; init; }
+        public int DailyFreq { get; init; }
+        public int Monthly2Freq { get; init; }
+        public bool OccursOnceAt { get; init; }
+        public DateTime OccursOnceAtHour { get; init; }
+        public bool OccursEvery { get; init; }
+        public int OccursEveryFreq { get; init; }
+        public int Freq { get; init; }
+        public string? FreqTime { get; init; }
+        public DateTime StartingHour { get; init; }
+        public DateTime EndingHour { get; init; }
+        public DateTime StartingLimit { get; init; }
+        public DateTime EndingLimit { get; init; }
         public String? NextExecutionTime { get; set; }
         public String? Description { get; set; }
         public DateTime CalculatedDate { get; set; }

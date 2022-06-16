@@ -1,4 +1,6 @@
-﻿namespace SchedulerV3
+﻿using SchedulerV3.Calculate;
+
+namespace SchedulerV3.Descriptions
 {
     public static class MonthlyTheEveryDescription
     {

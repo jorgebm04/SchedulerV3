@@ -1,6 +1,6 @@
 ﻿namespace SchedulerV3.Windows
 {
-    partial class GUIScheduler
+    partial class GuiScheduler
     {
         /// <summary>
         ///  Required designer variable.
@@ -618,7 +618,7 @@
             this.Controls.Add(this.monthlyConfigurationGroupBox);
             this.Controls.Add(this.configurationGroupBox);
             this.Controls.Add(this.inputGroupBox);
-            this.Name = "GUIScheduler";
+            this.Name = "GuiScheduler";
             this.Text = "Scheduler";
             this.inputGroupBox.ResumeLayout(false);
             this.inputGroupBox.PerformLayout();

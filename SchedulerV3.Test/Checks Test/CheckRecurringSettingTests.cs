@@ -1,7 +1,8 @@
-﻿using Xunit;
-using FluentAssertions;
+﻿using FluentAssertions;
+using SchedulerV3.Checks;
+using Xunit;
 
-namespace SchedulerV3.Test
+namespace SchedulerV3.Test.Checks_Test
 {
     public class CheckRecurringSettingTests
     {

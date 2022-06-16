@@ -1,4 +1,4 @@
-﻿namespace SchedulerV3
+﻿namespace SchedulerV3.Descriptions
 {
     public static class DailyRecurringDescription
     {

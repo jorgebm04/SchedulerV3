@@ -1,4 +1,4 @@
-﻿namespace SchedulerV3
+﻿namespace SchedulerV3.Checks
 {
     public static class CurrentDateChecker
     {

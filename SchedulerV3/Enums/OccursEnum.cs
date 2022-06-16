@@ -1,6 +1,6 @@
-﻿namespace SchedulerV3
+﻿namespace SchedulerV3.Enums
 {
-    public class OccursEnum
+    public static class OccursEnum
     {
         public enum Occurs 
         {

@@ -1,23 +1,25 @@
-﻿namespace SchedulerV3
+﻿using SchedulerV3.Enums;
+
+namespace SchedulerV3.Calculate
 {
     public static class FreqSetter
     {
         public static String SetFreq(Settings settings)
         {
             string freq;
-            if (settings.MonthlyFreq == (int)OccursDayEnum.OccursDay.first)
+            if (settings.MonthlyFreq == (int)OccursDayEnum.OccursDay.First)
             {
                 freq = "first";
             }
-            else if (settings.MonthlyFreq == (int)OccursDayEnum.OccursDay.second)
+            else if (settings.MonthlyFreq == (int)OccursDayEnum.OccursDay.Second)
             {
                 freq = "second";
             }
-            else if (settings.MonthlyFreq == (int)OccursDayEnum.OccursDay.third)
+            else if (settings.MonthlyFreq == (int)OccursDayEnum.OccursDay.Third)
             {
                 freq = "third";
             }
-            else if (settings.MonthlyFreq == (int)OccursDayEnum.OccursDay.fourth)
+            else if (settings.MonthlyFreq == (int)OccursDayEnum.OccursDay.Fourth)
             {
                 freq = "fourth";
             }

@@ -1,8 +1,13 @@
+using SchedulerV3.Calculate;
+using SchedulerV3.Checks;
+using SchedulerV3.Descriptions;
+using SchedulerV3.Enums;
+
 namespace SchedulerV3.Windows
 {
-    public partial class GUIScheduler : Form
+    public partial class GuiScheduler : Form
     {
-        public GUIScheduler()
+        public GuiScheduler()
         {
             InitializeComponent();
         }
@@ -38,11 +43,12 @@ namespace SchedulerV3.Windows
             };
             CheckSettings(settings);
         }
-        public void CheckSettings(Settings settings)
+
+        private void CheckSettings(Settings settings)
         {
             if (!enabledCheckBox.Checked)
             {
-                nextExecutionTimeTextBox.Text = "Scheduler not enabled";
+                nextExecutionTimeTextBox.Text = @"Scheduler not enabled";
                 return;
             }
             switch (settings.Type)
@@ -66,7 +72,7 @@ namespace SchedulerV3.Windows
 #pragma warning restore CS8602 // Dereference of a possibly null reference.
         }
 
-        public void CalculateNextDate(Settings settings)
+        private void CalculateNextDate(Settings settings)
         {
             switch (settings.Type)
             {
@@ -76,8 +82,6 @@ namespace SchedulerV3.Windows
                     break;
                 case (int)TypeEnum.Types.Recurring:
                     CalculateRecurring.Calculate(settings);
-                    break;
-                default:
                     break;
             }
             nextExecutionTimeTextBox.Text = settings.NextExecutionTime;

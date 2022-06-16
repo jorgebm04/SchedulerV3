@@ -1,4 +1,4 @@
-﻿namespace SchedulerV3
+﻿namespace SchedulerV3.Calculate
 {
     public static class CalculateOnce
     {

@@ -1,4 +1,6 @@
-﻿namespace SchedulerV3
+﻿using SchedulerV3.Checks;
+
+namespace SchedulerV3.Calculate
 {
     public static class CalculateMonthlyDayEveryRecurring
     {
@@ -7,85 +9,38 @@
             int rest = settings.CurrentDate.Month % settings.NumMonths;
             if (rest != 0)
             {
-                ReturnDate(settings, rest);
+                DifferentReturnTypes.ReturnDateDay(settings, rest);
             }
             else
             {
                 if (settings.NumDay > settings.CurrentDate.Day)
                 {
-                    ReturnNormalDate(settings);
+                    DifferentReturnTypes.ReturnNormalDateDay(settings);
                 }
                 else if (settings.NumDay == settings.CurrentDate.Day)
                 {
                     if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.StartingHour.TimeOfDay) < 0)
                     {
-                        ReturnNormalDate(settings);
+                        DifferentReturnTypes.ReturnNormalDateDay(settings);
                     }
                     else if ((TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.StartingHour.TimeOfDay) > 0) &&
-                        TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.EndingHour.TimeOfDay) < 0)
+                             TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.EndingHour.TimeOfDay) < 0)
                     {
                         Calculate(settings);
                     }
                     else if (TimeSpan.Compare(settings.CurrentDate.TimeOfDay, settings.EndingHour.TimeOfDay) > 0)
                     {
-                        ReturnAddedDate(settings);
+                        DifferentReturnTypes.ReturnAddedDateDay(settings);
                     }
                 }
                 else
                 {
-                    ReturnAddedDate(settings);
+                    DifferentReturnTypes.ReturnAddedDateDay(settings);
                 }
-            }     
-        }
-
-        public static void ReturnDate(Settings settings, int rest)
-        {
-            int newMonth = (settings.CurrentDate.Month - rest) + settings.NumMonths;
-            DateTime calDate = new(settings.CurrentDate.Year, newMonth, settings.NumDay,
-                    settings.StartingHour.Hour, settings.StartingHour.Minute, settings.StartingHour.Second);
-            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.EndingLimit);
-            if (!inLimits)
-            {
-                settings.NextExecutionTime = "Next execution over end date limits";
-                settings.IsOverLimit = true;
-                return;
             }
-            settings.CalculatedDate = calDate;
-            settings.NextExecutionTime = settings.CalculatedDate.ToString("dd/MM/yyyy HH:mm");
         }
 
-        public static void ReturnNormalDate(Settings settings)
-        {
-            DateTime calDate = new(settings.CurrentDate.Year, settings.CurrentDate.Month, settings.NumDay,
-                    settings.StartingHour.Hour, settings.StartingHour.Minute, settings.StartingHour.Second);
-            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.EndingLimit);
-            if (!inLimits)
-            {
-                settings.NextExecutionTime = "Next execution over end date limits";
-                settings.IsOverLimit = true;
-                return;
-            }
-            settings.CalculatedDate = calDate;
-            settings.NextExecutionTime = settings.CalculatedDate.ToString("dd/MM/yyyy HH:mm");
-        }
-
-        public static void ReturnAddedDate(Settings settings)
-        {
-            DateTime calDate = new (settings.CurrentDate.Year, settings.CurrentDate.Month, settings.NumDay,
-                    settings.StartingHour.Hour, settings.StartingHour.Minute, settings.StartingHour.Second);
-            calDate = calDate.AddMonths(settings.NumMonths);
-            bool inLimits = OverLimitsChecker.CheckInLimits(calDate, settings.EndingLimit);
-            if (!inLimits)
-            {
-                settings.NextExecutionTime = "Next execution over end date limits";
-                settings.IsOverLimit = true;
-                return;
-            }
-            settings.CalculatedDate = calDate;
-            settings.NextExecutionTime = settings.CalculatedDate.ToString("dd/MM/yyyy HH:mm");
-        }
-
-        public static void Calculate(Settings settings)
+        private static void Calculate(Settings settings)
         {
             //Calculate the next execution time
             DateTime calculated = CalculateEvery.Calculate(settings);

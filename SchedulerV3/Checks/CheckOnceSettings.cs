@@ -1,4 +1,4 @@
-﻿namespace SchedulerV3
+﻿namespace SchedulerV3.Checks
 {
     public static class CheckOnceSettings
     {
@@ -13,7 +13,7 @@
             CheckOnceTimeAt(settings);
         }
 
-        public static void CheckOnceTimeAt(Settings settings)
+        private static void CheckOnceTimeAt(Settings settings)
         {
             bool time = OnceTimeAtChecker.CheckOnceTimeAt(settings.CurrentDate,settings.OnceTimeAt);
             if (!time)
