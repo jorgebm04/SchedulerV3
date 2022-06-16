@@ -1,5 +1,6 @@
 using FluentAssertions;
 using SchedulerV3.Checks;
+using System;
 using Xunit;
 
 namespace SchedulerV3.Test.Checks_Test
@@ -7,12 +8,41 @@ namespace SchedulerV3.Test.Checks_Test
     public class CheckOnceSettingsTests
     {
         [Fact]
+        public void Validate_incorrect_current_date_checker_settings()
+        {
+            //Arrange
+            var settings = new Settings
+            {
+                CurrentDate = new DateTime(2022, 1, 1, 0, 0, 0)
+            };
+            //Act
+            CheckOnceSettings.CheckSettings(settings);
+            //Assert
+            settings.NextExecutionTime.Should().Be("Current date not correct.");
+        }
+
+        [Fact]
+        public void Validate_incorrect_once_time_at_date_checker_settings()
+        {
+            //Arrange
+            var settings = new Settings
+            {
+                CurrentDate = DateTime.Now,
+                OnceTimeAt = new DateTime(2022,1,1,0,0,0)
+            };
+            //Act
+            CheckOnceSettings.CheckSettings(settings);
+            //Assert
+            settings.NextExecutionTime.Should().Be("Once time at date not valid");
+        }
+
+        [Fact]
         public void Validate_correct_current_date_checker()
         {
             //Arrange
             var settings = new Settings
             {
-                CurrentDate = System.DateTime.Now
+                CurrentDate = DateTime.Now
             };
             //Act
             bool result = CurrentDateChecker.CheckCurrentDate(settings.CurrentDate);
