@@ -54,7 +54,7 @@
                 }
             } else
             {
-                pre = new DateTime(current.Year, current.Month, 1);
+                pre = new DateTime(current.Year, current.Month, 1,current.Hour,current.Minute,current.Second);
                 int count = freq;
                 while (count >= 0)
                 {
@@ -91,7 +91,7 @@
                 }
             } else
             {
-                pre = new DateTime(current.Year, current.Month, 1);
+                pre = new DateTime(current.Year, current.Month, 1,current.Hour, current.Minute, current.Second);
                 int count = freq;
                 while (count >= 0)
                 {

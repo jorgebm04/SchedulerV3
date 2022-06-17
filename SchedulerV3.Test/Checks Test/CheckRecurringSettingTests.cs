@@ -22,6 +22,46 @@ namespace SchedulerV3.Test.Checks_Test
         }
 
         [Fact]
+        public void Validate_correct_check_recurring_settings()
+        {
+            //Arrange
+            var settings = new Settings { 
+                Occurs = -1
+            };
+            //Act
+            CheckRecurringSettings.CheckSettings(settings);
+            //Assert
+            settings.NextExecutionTime.Should().Be("Select and occurrence.");
+        }
+
+        [Fact]
+        public void Validate_check_recurring_settings_daily()
+        {
+            //Arrange
+            var settings = new Settings
+            {
+            };
+            //Act
+            CheckRecurringSettings.CheckSettings(settings);
+            //Assert
+            settings.NextExecutionTime.Should().Be("Select a type for daily frequency.");
+        }
+
+        [Fact]
+        public void Validate_check_recurring_settings_monthly()
+        {
+            //Arrange
+            var settings = new Settings
+            {
+                Occurs = 1
+            };
+            //Act
+            CheckRecurringSettings.CheckSettings(settings);
+            //Assert
+            settings.NextExecutionTime.Should().Be("Select a monthly configuration.");
+        }
+
+        [Fact]
         public void Validate_incorrect_month_frequency_checker()
         {
             //Arrange

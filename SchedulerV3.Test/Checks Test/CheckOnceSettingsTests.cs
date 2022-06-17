@@ -1,5 +1,6 @@
 using FluentAssertions;
 using SchedulerV3.Checks;
+using SchedulerV3.Descriptions;
 using System;
 using Xunit;
 
@@ -19,6 +20,21 @@ namespace SchedulerV3.Test.Checks_Test
             CheckOnceSettings.CheckSettings(settings);
             //Assert
             settings.NextExecutionTime.Should().Be("Current date not correct.");
+        }
+
+        [Fact]
+        public void Validate_once_description()
+        {
+            //Arrange
+            var settings = new Settings
+            {
+                CalculatedDate = new DateTime(2022, 06, 16, 10, 0, 0)
+            };
+            //Act
+            OnceDescription.SetDescription(settings);
+            //Assert
+            settings.Description.Should().Be("Occurs once. Schedule will be used on " + settings.CalculatedDate.ToString("dd'/'MM'/'yyyy") + " at " +
+                        settings.CalculatedDate.ToString("HH:mm"));
         }
 
         [Fact]

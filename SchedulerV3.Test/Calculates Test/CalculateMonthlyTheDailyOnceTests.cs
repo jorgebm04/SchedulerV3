@@ -273,6 +273,54 @@ namespace SchedulerV3.Test.Calculates_Test
         }
 
         [Fact]
+        public void Validate_calculated_date_type_recurring_monthly_first_weekday_on_sunday()
+        {
+            //Arrange
+            var settings = new Settings
+            {
+                CurrentDate = new System.DateTime(2022, 03, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 8, //WeekDay
+                Monthly2Freq = 5, //Num Months
+                The = true,
+                OccursOnceAt = true,
+                OccursOnceAtHour = new System.DateTime(2000, 01, 1, 14, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+            };
+            var expectedDate = new System.DateTime(2022, 05, 02, 14, 0, 0);
+            //Act
+            CalculateRecurring.Calculate(settings);
+            //Assert
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+        }
+
+        [Fact]
+        public void Validate_calculated_date_type_recurring_monthly_first_weekday_on_saturday()
+        {
+            //Arrange
+            var settings = new Settings
+            {
+                CurrentDate = new System.DateTime(2021, 12, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 8, //WeekDay
+                Monthly2Freq = 1, //Num Months
+                The = true,
+                OccursOnceAt = true,
+                OccursOnceAtHour = new System.DateTime(2000, 01, 1, 14, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+            };
+            var expectedDate = new System.DateTime(2022, 01, 03, 14, 0, 0);
+            //Act
+            CalculateRecurring.Calculate(settings);
+            //Assert
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+        }
+
+        [Fact]
         public void Validate_calculated_date_type_recurring_monthly_first_weekend_day()
         {
             //Arrange
@@ -290,6 +338,54 @@ namespace SchedulerV3.Test.Calculates_Test
                 EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 08, 06, 14, 0, 0);
+            //Act
+            CalculateRecurring.Calculate(settings);
+            //Assert
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+        }
+
+        [Fact]
+        public void Validate_calculated_date_type_recurring_monthly_first_weekend_day_on_tuesday()
+        {
+            //Arrange
+            var settings = new Settings
+            {
+                CurrentDate = new System.DateTime(2022, 01, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 9, //WeekendDay
+                Monthly2Freq = 2, //Num Months
+                The = true,
+                OccursOnceAt = true,
+                OccursOnceAtHour = new System.DateTime(2000, 01, 1, 14, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+            };
+            var expectedDate = new System.DateTime(2022, 02, 05, 14, 0, 0);
+            //Act
+            CalculateRecurring.Calculate(settings);
+            //Assert
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+        }
+
+        [Fact]
+        public void Validate_calculated_date_type_recurring_monthly_first_weekend_day_on_thursday()
+        {
+            //Arrange
+            var settings = new Settings
+            {
+                CurrentDate = new System.DateTime(2022, 01, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 0, //First
+                DailyFreq = 9, //WeekendDay
+                Monthly2Freq = 9, //Num Months
+                The = true,
+                OccursOnceAt = true,
+                OccursOnceAtHour = new System.DateTime(2000, 01, 1, 14, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+            };
+            var expectedDate = new System.DateTime(2022, 09, 03, 14, 0, 0);
             //Act
             CalculateRecurring.Calculate(settings);
             //Assert
@@ -1257,6 +1353,30 @@ namespace SchedulerV3.Test.Calculates_Test
                 EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
             };
             var expectedDate = new System.DateTime(2022, 06, 30, 14, 0, 0);
+            //Act
+            CalculateRecurring.Calculate(settings);
+            //Assert
+            settings.NextExecutionTime.Should().Be(expectedDate.ToString("dd/MM/yyyy") + " " + expectedDate.ToString("HH:mm"));
+        }
+
+        [Fact]
+        public void Validate_calculated_date_type_recurring_monthly_last_weekday_in_while()
+        {
+            //Arrange
+            var settings = new Settings
+            {
+                CurrentDate = new System.DateTime(2022, 06, 09, 8, 10, 0),
+                Occurs = 1,
+                MonthlyFreq = 4, //Last
+                DailyFreq = 8, //WeekDay
+                Monthly2Freq = 7, //Num Months
+                The = true,
+                OccursOnceAt = true,
+                OccursOnceAtHour = new System.DateTime(2000, 01, 1, 14, 0, 0),
+                StartingLimit = new System.DateTime(2022, 1, 1, 0, 0, 0),
+                EndingLimit = new System.DateTime(2022, 12, 31, 0, 0, 0)
+            };
+            var expectedDate = new System.DateTime(2022, 07, 29, 14, 0, 0);
             //Act
             CalculateRecurring.Calculate(settings);
             //Assert
