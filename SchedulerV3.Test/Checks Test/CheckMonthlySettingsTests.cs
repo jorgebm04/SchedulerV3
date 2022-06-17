@@ -41,9 +41,7 @@ namespace SchedulerV3.Test.Checks_Test
         public void Validate_check_monthly_settings_not_day()
         {
             //Arrange
-            var settings = new Settings
-            {
-            };
+            var settings = new Settings();
             //Act
             CheckMonthlySettings.CheckRecurrentMonthlySettings(settings);
             //Assert

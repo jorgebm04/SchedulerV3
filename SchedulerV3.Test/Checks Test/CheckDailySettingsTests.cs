@@ -62,9 +62,7 @@ namespace SchedulerV3.Test.Checks_Test
         public void Validate_not_check_daily_settings_occurs_every()
         {
             //Arrange
-            var settings = new Settings
-            {
-            };
+            var settings = new Settings();
             //Act
             CheckDailySettings.CheckRecurringDailySettings(settings);
             //Assert

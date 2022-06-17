@@ -72,7 +72,7 @@ namespace SchedulerV3.Test.Checks_Test
             //Arrange
             var settings = new Settings
             {
-                CurrentDate = new System.DateTime(2000, 1, 1, 0, 0, 0)
+                CurrentDate = new DateTime(2000, 1, 1, 0, 0, 0)
             };
             //Act
             bool result = CurrentDateChecker.CheckCurrentDate(settings.CurrentDate);
@@ -86,8 +86,8 @@ namespace SchedulerV3.Test.Checks_Test
             //Arrange
             var settings = new Settings
             {
-                CurrentDate = new System.DateTime(2022, 05, 20, 15, 0, 0),
-                OnceTimeAt = new System.DateTime(2022, 05, 30, 15, 0, 0)
+                CurrentDate = new DateTime(2022, 05, 20, 15, 0, 0),
+                OnceTimeAt = new DateTime(2022, 05, 30, 15, 0, 0)
             };
             //Act
             bool result = OnceTimeAtChecker.CheckOnceTimeAt(settings.CurrentDate, settings.OnceTimeAt);
@@ -101,8 +101,8 @@ namespace SchedulerV3.Test.Checks_Test
             //Arrange
             var settings = new Settings
             {
-                CurrentDate = new System.DateTime(2022, 05, 20, 15, 0, 0),
-                OnceTimeAt = new System.DateTime(2022, 05, 10, 15, 0, 0)
+                CurrentDate = new DateTime(2022, 05, 20, 15, 0, 0),
+                OnceTimeAt = new DateTime(2022, 05, 10, 15, 0, 0)
             };
             //Act
             bool result = OnceTimeAtChecker.CheckOnceTimeAt(settings.CurrentDate, settings.OnceTimeAt);

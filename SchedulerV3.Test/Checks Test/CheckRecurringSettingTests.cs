@@ -38,9 +38,7 @@ namespace SchedulerV3.Test.Checks_Test
         public void Validate_check_recurring_settings_daily()
         {
             //Arrange
-            var settings = new Settings
-            {
-            };
+            var settings = new Settings();
             //Act
             CheckRecurringSettings.CheckSettings(settings);
             //Assert

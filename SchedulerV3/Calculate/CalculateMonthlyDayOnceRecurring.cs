@@ -1,6 +1,4 @@
-﻿using SchedulerV3.Checks;
-
-namespace SchedulerV3.Calculate
+﻿namespace SchedulerV3.Calculate
 {
     public static class CalculateMonthlyDayOnceRecurring
     {
