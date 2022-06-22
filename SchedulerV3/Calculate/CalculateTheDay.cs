@@ -95,35 +95,33 @@
                 int count = freq;
                 while (count >= 0)
                 {
-                    if (pre.DayOfWeek == DayOfWeek.Monday)
+                    switch (pre.DayOfWeek)
                     {
-                        pre = pre.AddDays(5);
-                        count--;
-                    }
-                    else if (pre.DayOfWeek == DayOfWeek.Tuesday)
-                    {
-                        pre = pre.AddDays(4);
-                        count--;
-                    }
-                    else if(pre.DayOfWeek == DayOfWeek.Wednesday)
-                    {
-                        pre = pre.AddDays(3);
-                        count--;
-                    }
-                    else if (pre.DayOfWeek == DayOfWeek.Thursday)
-                    {
-                        pre = pre.AddDays(2);
-                        count--;
-                    } 
-                    else if (pre.DayOfWeek == DayOfWeek.Friday || pre.DayOfWeek == DayOfWeek.Saturday)
-                    {
-                        pre = pre.AddDays(1);
-                        count--;
-                    }
-                    else if(pre.DayOfWeek == DayOfWeek.Sunday)
-                    {
-                        pre = pre.AddDays(6);
-                        count--;
+                        case DayOfWeek.Monday:
+                            pre = pre.AddDays(5);
+                            count--;
+                            break;
+                        case DayOfWeek.Tuesday:
+                            pre = pre.AddDays(4);
+                            count--;
+                            break;
+                        case DayOfWeek.Wednesday:
+                            pre = pre.AddDays(3);
+                            count--;
+                            break;
+                        case DayOfWeek.Thursday:
+                            pre = pre.AddDays(2);
+                            count--;
+                            break;
+                        case DayOfWeek.Friday:
+                        case DayOfWeek.Saturday:
+                            pre = pre.AddDays(1);
+                            count--;
+                            break;
+                        case DayOfWeek.Sunday:
+                            pre = pre.AddDays(6);
+                            count--;
+                            break;
                     }
                 }
             }

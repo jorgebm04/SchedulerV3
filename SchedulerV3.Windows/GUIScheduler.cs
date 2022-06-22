@@ -2,9 +2,11 @@ using SchedulerV3.Calculate;
 using SchedulerV3.Checks;
 using SchedulerV3.Descriptions;
 using SchedulerV3.Enums;
+using System.Diagnostics.CodeAnalysis;
 
 namespace SchedulerV3.Windows
 {
+    [ExcludeFromCodeCoverage]
     public partial class GuiScheduler : Form
     {
         public GuiScheduler()

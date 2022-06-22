@@ -12,12 +12,11 @@ namespace SchedulerV3.Calculate
                 {
                     CalculateDailyRecurring.CalculateNextExecutionTime(settings);
                     DailyRecurringDescription.SetDescription(settings);
+                    return;
                 }
-                else 
-                { 
-                    CalculateEveryRecurring.CalculateNextExecutionTime(settings);
-                    EveryRecurringDescription.SetDescription(settings);
-                }
+                CalculateEveryRecurring.CalculateNextExecutionTime(settings);
+                EveryRecurringDescription.SetDescription(settings);
+
             }
             else
             {
@@ -27,12 +26,11 @@ namespace SchedulerV3.Calculate
                     {
                         CalculateMonthlyDayOnceRecurring.CalculateNextExecutionTime(settings);
                         MonthlyDayOnceDescription.SetDescription(settings);
+                        return;
                     }
-                    else 
-                    {
-                        CalculateMonthlyDayEveryRecurring.CalculateNextExecutionTime(settings);
-                        MonthlyDayEveryDescription.SetDescription(settings);
-                    }
+                    CalculateMonthlyDayEveryRecurring.CalculateNextExecutionTime(settings);
+                    MonthlyDayEveryDescription.SetDescription(settings);
+
                 }
                 else
                 {
@@ -40,16 +38,15 @@ namespace SchedulerV3.Calculate
                     {
                         CalculateMonthlyTheOnceRecurring.CalculateNextExecutionTime(settings);
                         MonthlyTheOnceDescription.SetDescription(settings);
+                        return;
                     }
-                    else
-                    {
-                        CalculateMonthlyTheEveryRecurring.CalculateNextExecutionTime(settings);
-                        MonthlyTheEveryDescription.SetDescription(settings);
-                    }
+                    CalculateMonthlyTheEveryRecurring.CalculateNextExecutionTime(settings);
+                    MonthlyTheEveryDescription.SetDescription(settings);
+
                 }
-                
+
             }
-            
+
         }
     }
 }
